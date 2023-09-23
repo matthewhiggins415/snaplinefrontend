@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 
 export const UserMenuContainer = styled.button`
-  padding: 15px;
+  padding: 7px;
   width: auto;
-  height: 50px;
   border: 1px solid #ECECEC;
   border-radius: 20px;
   display: flex;
