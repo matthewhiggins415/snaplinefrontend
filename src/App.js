@@ -1,24 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
 
-function App() {
+// React Router
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from "react-router-dom";
+
+// Notifications
+import { ToastContainer, toast } from 'react-toastify'
+
+// Components 
+import Navbar from './components/Navbar';
+import Iconbar from './components/Iconbar';
+
+// Screens 
+import Landing from './screens/Landing';
+
+// Basic Styling
+require('./App.css')
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router> 
+      <Navbar />
+      <Iconbar />
+      <ToastContainer theme="light" position="top-right" autoClose={1500}/>
+      <Routes>
+        <Route path='/' element={<Landing/>} exact />
+      </Routes>
+    </Router>
   );
 }
 
