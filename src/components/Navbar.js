@@ -1,16 +1,22 @@
 import React, { useState } from 'react';
 import { NavbarContainer, LeftContainer, CenterContainer, RightContainer, BecomePhotographerLink } from '../styles/components/Navbar.styles';
 import Logo from './logo/Logo';
-import SearchBar from './search/Searchbar';
+import SearchBarBtn from './searchBtn/SearchBarBtn';
 import UserMenu from './userMenu/UserMenu';
 import DropDown from './dropdownmenu/Dropdown';
+import SearchBar from './searchbar/SearchBar';
 
 const Navbar = () => {
-  const [show, setShow] = useState(false);
+  const [showDropDown, setShowDropDown] = useState(false);
+  const [showSearchBar, setShowSearchBar] = useState(false);
 
-  const handleShow = () => {
-    setShow(!show)
-    console.log(show)
+  const handleDropShow = () => {
+    setShowDropDown(!showDropDown)
+    console.log(showDropDown)
+  }
+
+  const handleSearchShow = () => {
+    setShowSearchBar(!showSearchBar)
   }
 
   return (
@@ -20,14 +26,15 @@ const Navbar = () => {
           <Logo />
         </LeftContainer>
         <CenterContainer>
-          <SearchBar />
+          <SearchBarBtn handleShow={handleSearchShow}/>
         </CenterContainer>
         <RightContainer>
           <BecomePhotographerLink to="/something">Become a Photographer</BecomePhotographerLink>
-          <UserMenu handleShow={handleShow}/>
+          <UserMenu handleShow={handleDropShow}/>
         </RightContainer>
       </NavbarContainer>
-      <DropDown show={show}/>
+      <SearchBar show={showSearchBar} closeShow={handleSearchShow}/>
+      <DropDown show={showDropDown}/>
     </>
   )
 };

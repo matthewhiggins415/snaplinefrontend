@@ -2,9 +2,9 @@ import React from 'react';
 import { SeachBarContainer, SearchParamContainer } from '../../styles/components/Searchbar.styles';
 import { SearchIcon } from '../../styles/icons/SearchIcon'
 
-const SearchBar = () => {
+const SearchBarBtn = ({ handleShow }) => {
   return (
-    <SeachBarContainer>
+    <SeachBarContainer onClick={handleShow}>
       <SearchParamContainer>
         <p>sport</p>
         <p>location</p>
@@ -15,4 +15,4 @@ const SearchBar = () => {
   )
 }
 
-export default SearchBar
+export default SearchBarBtn
