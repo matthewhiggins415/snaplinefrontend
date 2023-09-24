@@ -71,8 +71,8 @@ export const FormBtn = styled.button`
 
 export const CloseBtn = styled.button`
   padding: 10px;
-  position: fixed;
-  right: 100px;
+  position: absolute;
+  right: 10px;
   border-radius: 50%;
   border: none;
   background-color: white;

@@ -3,9 +3,9 @@ import { User } from '../../styles/icons/User';
 
 import { UserMenuContainer } from '../../styles/components/UserMenu.styles';
 
-export const UserMenu = ({ handleShow }) => {
+export const UserMenu = ({ handleDropShow }) => {
   return (
-    <UserMenuContainer onClick={handleShow}>
+    <UserMenuContainer onClick={handleDropShow}>
       <Hamburger />
       <User />
     </UserMenuContainer>

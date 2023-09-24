@@ -12,7 +12,6 @@ const Navbar = () => {
 
   const handleDropShow = () => {
     setShowDropDown(!showDropDown)
-    console.log(showDropDown)
   }
 
   const handleSearchShow = () => {
@@ -30,11 +29,11 @@ const Navbar = () => {
         </CenterContainer>
         <RightContainer>
           <BecomePhotographerLink to="/something">Become a Photographer</BecomePhotographerLink>
-          <UserMenu handleShow={handleDropShow}/>
+          <UserMenu handleDropShow={handleDropShow}/>
         </RightContainer>
       </NavbarContainer>
-      <SearchBar show={showSearchBar} closeShow={handleSearchShow}/>
-      <DropDown show={showDropDown}/>
+      <SearchBar show={showSearchBar} close={handleSearchShow}/>
+      <DropDown show={showDropDown} handleDropShow={handleDropShow} setShowDropDown={setShowDropDown}/>
     </>
   )
 };

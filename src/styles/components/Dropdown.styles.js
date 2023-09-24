@@ -21,8 +21,8 @@ export const DropDownContainer = styled.div`
   top: 5em;
   background-color: white;
   cursor: pointer;
-  transition: opacity 150ms ease-in-out;
-  box-shadow: 0px 2px 2px -2px rgba(0, 0, 0, 0.85);
+  transition: 150ms ease-in-out;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 
   &:hover {
     box-shadow: 0 3px 10px -3px rgba(0, 0, 0, 0.85);
@@ -33,16 +33,21 @@ export const DropDownContainer = styled.div`
   }
 `;
 
-export const DropDownLink = styled(Link)`
+export const DropDownBtn = styled.button`
   width: 100%;
   margin: 0 auto;
   padding: 15px 30px;
   color: black;
   text-decoration: none;
+  text-align: left;
   font-size: medium;
   font-family: Arial, Helvetica, sans-serif;
   letter-spacing: 1.2px;
   text-decoration: none;
+  background-color: white;
+  border: none;
+  cursor: pointer;
+  transition: 150ms ease-in-out;
   
   &:hover {
     background-color: #ECECEC;

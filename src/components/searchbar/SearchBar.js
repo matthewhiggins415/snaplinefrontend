@@ -2,10 +2,10 @@ import React from 'react';
 import { ExitIcon } from '../../styles/icons/ExitIcon';
 import { SearchContainer, CloseBtn, Form, FormInput, CenterFormInput, FormBtn } from '../../styles/components/Search.styles';
 
-const SearchBar = ({ show, closeShow }) => {
+const SearchBar = ({ show, close }) => {
   return (
     <SearchContainer show={show}>
-      <CloseBtn onClick={closeShow}>
+      <CloseBtn onClick={close}>
         <ExitIcon />
       </CloseBtn>
       <Form>
