@@ -33,7 +33,7 @@ export const DropDownContainer = styled.div`
   }
 `;
 
-export const DropDownBtn = styled.button`
+export const DropDownBtn = styled(Link)`
   width: 100%;
   margin: 0 auto;
   padding: 15px 30px;

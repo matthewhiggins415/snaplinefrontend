@@ -28,7 +28,7 @@ const Navbar = () => {
           <SearchBarBtn handleShow={handleSearchShow}/>
         </CenterContainer>
         <RightContainer>
-          <BecomePhotographerLink to="/something">Become a Photographer</BecomePhotographerLink>
+          <BecomePhotographerLink to="/becomephotographer">Become a Photographer</BecomePhotographerLink>
           <UserMenu handleDropShow={handleDropShow}/>
         </RightContainer>
       </NavbarContainer>

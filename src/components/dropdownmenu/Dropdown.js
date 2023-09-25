@@ -20,9 +20,9 @@ const DropDown = ({ show, setShowDropDown }) => {
 
   return (
     <DropDownContainer ref={menu} show={show}>
-      <DropDownBtn>Login</DropDownBtn>
-      <DropDownBtn>Sign up</DropDownBtn>
-      <DropDownBtn>Help Center</DropDownBtn>
+      <DropDownBtn to="/login">Login</DropDownBtn>
+      <DropDownBtn to="/register">Sign up</DropDownBtn>
+      <DropDownBtn to="/helpcenter">Help Center</DropDownBtn>
     </DropDownContainer>
   )
 }

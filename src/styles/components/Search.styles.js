@@ -20,7 +20,6 @@ export const SearchContainer = styled.div`
   justify-content: center;
   transition: opacity 150ms ease-in-out;
 
-
   ${(props) =>
     props.show && css`animation: ${fadeIn} 150ms ease-in-out;`
   }

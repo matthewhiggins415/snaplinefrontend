@@ -1,5 +1,4 @@
 import React from 'react';
-import Navbar from '../components/Navbar';
 import { ImageListingsContainer, ScreenContainer } from '../styles/screens/Landing.styles';
 import ImageListing from '../components/imagelisting/ImageListing';
 
