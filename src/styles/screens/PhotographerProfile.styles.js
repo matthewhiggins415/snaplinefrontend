@@ -12,7 +12,3 @@ export const ScreenContainer = styled.div`
     padding: 10px;
   }
 `
-
-export const ImageListingsContainer = styled.div`
-  min-height: 80vh;
-`

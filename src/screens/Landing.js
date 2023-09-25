@@ -1,6 +1,6 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
-import { ScreenContainer, ImageListingsContainer } from '../styles/screens/Landing.styles';
+import { ImageListingsContainer, ScreenContainer } from '../styles/screens/Landing.styles';
 import ImageListing from '../components/imagelisting/ImageListing';
 
 const Landing = () => {

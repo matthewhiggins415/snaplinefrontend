@@ -1,20 +1,29 @@
 import React from 'react';
-import { ImageContainer, ImageListingInfo } from '../../styles/components/ImageListing.styles'
+import { ImageListingContainer, ImageListingInfo, ImageLink, Image, BottomInfo, ReviewInfo, Location, PhotographerInfoLink } from '../../styles/components/ImageListing.styles';
+import { StarIcon } from '../../styles/icons/StarIcon';
 
 const ImageListing = () => {
   return (
-    <ImageContainer>
-      <div>
-        <h1>Image</h1>
-      </div>
+    <ImageListingContainer>
+      <ImageLink to="/image/12345">
+        <Image src="https://www.surfer.com/.image/t_share/MTk2Mjc3MTUzMDM1Mzk2NDAw/ryan-burch-fiji.jpg" img />
+      </ImageLink>
       <ImageListingInfo>
-        <h2>location</h2>
-        <h2>sport</h2>
-        <h2>price</h2>
-        <h4>photographer</h4>
-        <h4>photographer rating</h4>
+        <Location to="/location/cronkitebeach">Fort Cronkite/Rodeo Beach</Location>
+        <p>02/19/23</p>
+        <BottomInfo>
+          <PhotographerInfoLink to="/photographer/dougflaherty">
+            <h4>Doug Flaherty</h4>
+            <ReviewInfo>
+              <StarIcon />
+              <h4>4.95 (27)</h4>
+            </ReviewInfo>
+          </PhotographerInfoLink>
+          <h2>$20</h2>
+        </BottomInfo>
+
       </ImageListingInfo>
-    </ImageContainer>
+    </ImageListingContainer>
   )
 }
 

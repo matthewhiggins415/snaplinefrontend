@@ -16,6 +16,10 @@ import Iconbar from './components/Iconbar';
 
 // Screens 
 import Landing from './screens/Landing';
+import PhotographerProfile from './screens/PhotographerProfile';
+import ImageDetails from './screens/ImageDetails';
+import LocationScreen from './screens/Location';
+
 
 // Basic Styling
 require('./App.css')
@@ -27,7 +31,10 @@ const App = () => {
       <Iconbar />
       <ToastContainer theme="light" position="top-right" autoClose={1500}/>
       <Routes>
-        <Route path='/' element={<Landing/>} exact />
+        <Route path='/landing' element={<Landing/>} exact />
+        <Route path='/photographer/:id' element={<PhotographerProfile/>} exact />
+        <Route path='/image/:id' element={<ImageDetails/>} exact />
+        <Route path='/location/:id' element={<LocationScreen/>} exact />
       </Routes>
     </Router>
   );
