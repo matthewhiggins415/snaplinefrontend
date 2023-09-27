@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
-import { DropDownContainer, DropDownBtn } from '../../styles/components/Dropdown.styles';
+import { DropDownContainer, DropDownBtn, SignOutBtn } from '../../styles/components/Dropdown.styles';
 
-const DropDown = ({ show, setShowDropDown }) => {
+const DropDown = ({ user, show, setShowDropDown, handleSignOut={handleSignOut} }) => {
   let menu = useRef()
 
   useEffect(() => {
@@ -20,9 +20,19 @@ const DropDown = ({ show, setShowDropDown }) => {
 
   return (
     <DropDownContainer ref={menu} show={show}>
-      <DropDownBtn to="/login">Login</DropDownBtn>
-      <DropDownBtn to="/register">Sign up</DropDownBtn>
+      { Object.keys(user).length === 0 ? 
+          <DropDownBtn to="/login">Login</DropDownBtn> :
+          <DropDownBtn to="/profile/matt">Profile</DropDownBtn>
+      }
+      {
+        Object.keys(user).length === 0 ? 
+          <DropDownBtn to="/register">Sign up</DropDownBtn> :
+          <></>
+      }
       <DropDownBtn to="/helpcenter">Help Center</DropDownBtn>
+      { Object.keys(user).length === 0 ? 
+          <></> : 
+          <SignOutBtn onClick={handleSignOut}>Logout</SignOutBtn> }
     </DropDownContainer>
   )
 }

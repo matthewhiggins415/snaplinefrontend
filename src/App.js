@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 // React Router
 import {
@@ -29,14 +29,22 @@ import Login from './screens/Login';
 require('./App.css')
 
 const App = () => {
+  const [user, setUser] = useState({});
+
+  const handleSignOut = (e) => {
+    setUser({})
+    console.log(document.getElementById("signInDiv"))
+    // document.getElementById("signInDiv").hidden = false;
+  }
+
   return (
     <Router> 
-      <Navbar />
+      <Navbar handleSignOut={handleSignOut} user={user}/>
       <Iconbar />
       <ToastContainer theme="light" position="top-right" autoClose={1500}/>
       <Routes>
         <Route path='/' element={<Landing />} />
-        <Route path='/login' element={<Login />} />
+        <Route path='/login' element={<Login user={user} setUser={setUser}/>}/>
         <Route path='/register' element={<Register />} />
         <Route path='/photographer/:id' element={<PhotographerProfile />} exact />
         <Route path='/image/:id' element={<ImageDetails />} exact />

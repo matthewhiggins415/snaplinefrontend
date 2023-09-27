@@ -1,5 +1,6 @@
 import styled, { keyframes, css } from "styled-components";
 import { Link } from 'react-router-dom';
+import { editableInputTypes } from "@testing-library/user-event/dist/utils";
 
 const fadeIn = keyframes`
   from {
@@ -38,7 +39,6 @@ export const DropDownBtn = styled(Link)`
   margin: 0 auto;
   padding: 15px 30px;
   color: black;
-  text-decoration: none;
   text-align: left;
   font-size: medium;
   font-family: Arial, Helvetica, sans-serif;
@@ -62,5 +62,24 @@ export const DropDownBtn = styled(Link)`
     border-top: 1px solid #ECECEC;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
+  }
+`
+
+export const SignOutBtn = styled.button`
+  border: none;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  transition: 150ms ease-in-out;
+  padding: 15px 30px;
+  color: black;
+  text-align: left;
+  font-size: medium;
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: 1.2px;
+  text-decoration: none;
+  background-color: white;
+  cursor: pointer;
+  &:hover {
+    background-color: #ECECEC;
   }
 `

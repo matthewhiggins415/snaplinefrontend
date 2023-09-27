@@ -30,7 +30,8 @@ export const Form = styled.form`
   padding: 15px;
   border-radius: 15px;
   margin-top: 3em;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;`
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+`
 
 export const FormH1 = styled.h1`
   text-align: center;
@@ -46,7 +47,10 @@ export const FormInput = styled.input`
   padding: 10px;
   margin-top: 1.5em;
   border: none;
-  border-bottom: 2px solid #ECECEC`
+  border-bottom: 2px solid #ECECEC;
+  align-items: center;
+`
+
 
 export const FormBtn = styled.button`
   font-size: large;

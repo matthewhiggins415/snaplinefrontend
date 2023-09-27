@@ -6,7 +6,7 @@ import UserMenu from './userMenu/UserMenu';
 import DropDown from './dropdownmenu/Dropdown';
 import SearchBar from './searchbar/SearchBar';
 
-const Navbar = () => {
+const Navbar = ({ user, handleSignOut }) => {
   const [showDropDown, setShowDropDown] = useState(false);
   const [showSearchBar, setShowSearchBar] = useState(false);
 
@@ -29,11 +29,11 @@ const Navbar = () => {
         </CenterContainer>
         <RightContainer>
           <BecomePhotographerLink to="/becomephotographer">Become a Photographer</BecomePhotographerLink>
-          <UserMenu handleDropShow={handleDropShow}/>
+          <UserMenu user={user} handleDropShow={handleDropShow} />
         </RightContainer>
       </NavbarContainer>
       <SearchBar show={showSearchBar} close={handleSearchShow}/>
-      <DropDown show={showDropDown} handleDropShow={handleDropShow} setShowDropDown={setShowDropDown}/>
+      <DropDown user={user} show={showDropDown} handleDropShow={handleDropShow} setShowDropDown={setShowDropDown} handleSignOut={handleSignOut}/>
     </>
   )
 };

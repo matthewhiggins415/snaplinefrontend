@@ -18,3 +18,10 @@ export const UserMenuContainer = styled.button`
     box-shadow: 0 3px 10px -3px rgba(0, 0, 0, 0.85);
   }
 `
+
+export const UserImg = styled.img`
+  height: 30px;
+  width: 30px;
+  border-radius: 25px;
+  margin-right: 5px;
+`
