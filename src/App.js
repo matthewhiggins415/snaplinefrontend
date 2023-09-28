@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 // React Router
 import {
@@ -45,7 +45,7 @@ const App = () => {
       <Routes>
         <Route path='/' element={<Landing />} />
         <Route path='/login' element={<Login user={user} setUser={setUser}/>}/>
-        <Route path='/register' element={<Register />} />
+        <Route path='/register' element={<Register user={user} setUser={setUser}/>} />
         <Route path='/photographer/:id' element={<PhotographerProfile />} exact />
         <Route path='/image/:id' element={<ImageDetails />} exact />
         <Route path='/location/:id' element={<LocationScreen />} exact />

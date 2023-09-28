@@ -1,11 +1,12 @@
 import React from 'react';
-import { ImageListingContainer, ImageListingInfo, ImageLink, Image, BottomInfo, ReviewInfo, Location, PhotographerInfoLink } from '../../styles/components/ImageListing.styles';
+import { Overlay, ImageListingContainer, ImageListingInfo, ImageLink, Image, BottomInfo, ReviewInfo, Location, PhotographerInfoLink, PriceContainer, OriginalPrice} from '../../styles/components/ImageListing.styles';
 import { StarIcon } from '../../styles/icons/StarIcon';
 
 const ImageListing = () => {
   return (
     <ImageListingContainer>
       <ImageLink to="/image/12345">
+        <Overlay />
         <Image src="https://www.surfer.com/.image/t_share/MTk2Mjc3MTUzMDM1Mzk2NDAw/ryan-burch-fiji.jpg" img />
       </ImageLink>
       <ImageListingInfo>
@@ -19,9 +20,12 @@ const ImageListing = () => {
               <h4>4.95 (27)</h4>
             </ReviewInfo>
           </PhotographerInfoLink>
-          <h2>$20</h2>
+          <PriceContainer>
+            <OriginalPrice>$25</OriginalPrice>
+            <h2>$20</h2>
+            <button title="add to cart">+</button>
+          </PriceContainer>
         </BottomInfo>
-
       </ImageListingInfo>
     </ImageListingContainer>
   )

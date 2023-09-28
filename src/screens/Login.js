@@ -50,8 +50,8 @@ const Login = ({ user, setUser }) => {
       <Container>
         <Form>
           <FormH1>Login</FormH1>
-          <FormInput placeholder='email'/>
-          <FormInput placeholder='password'/>
+          <FormInput placeholder='email' required/>
+          <FormInput placeholder='password' required/>
           <FormBtn>Continue</FormBtn>
           <div style={divStyle} id="signInDiv"></div>
         </Form>

@@ -1,6 +1,5 @@
 import styled, { keyframes, css } from "styled-components";
 import { Link } from 'react-router-dom';
-import { editableInputTypes } from "@testing-library/user-event/dist/utils";
 
 const fadeIn = keyframes`
   from {

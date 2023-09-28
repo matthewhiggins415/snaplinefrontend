@@ -49,6 +49,7 @@ export const FormInput = styled.input`
   border: none;
   border-bottom: 2px solid #ECECEC;
   align-items: center;
+  outline: none;
 `
 
 

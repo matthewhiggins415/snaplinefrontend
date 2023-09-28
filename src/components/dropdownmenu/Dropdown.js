@@ -1,7 +1,10 @@
 import React, { useEffect, useRef } from 'react';
 import { DropDownContainer, DropDownBtn, SignOutBtn } from '../../styles/components/Dropdown.styles';
+import { useNavigate } from "react-router-dom";
 
-const DropDown = ({ user, show, setShowDropDown, handleSignOut={handleSignOut} }) => {
+const DropDown = ({ user, show, setShowDropDown, handleSignOut }) => {
+  const navigate = useNavigate();
+
   let menu = useRef()
 
   useEffect(() => {
@@ -22,7 +25,10 @@ const DropDown = ({ user, show, setShowDropDown, handleSignOut={handleSignOut} }
     <DropDownContainer ref={menu} show={show}>
       { Object.keys(user).length === 0 ? 
           <DropDownBtn to="/login">Login</DropDownBtn> :
-          <DropDownBtn to="/profile/matt">Profile</DropDownBtn>
+          <>
+            <DropDownBtn to="/profile/matt">Profile</DropDownBtn>
+            <DropDownBtn to="/cart">Cart</DropDownBtn>
+          </>
       }
       {
         Object.keys(user).length === 0 ? 
@@ -32,7 +38,11 @@ const DropDown = ({ user, show, setShowDropDown, handleSignOut={handleSignOut} }
       <DropDownBtn to="/helpcenter">Help Center</DropDownBtn>
       { Object.keys(user).length === 0 ? 
           <></> : 
-          <SignOutBtn onClick={handleSignOut}>Logout</SignOutBtn> }
+          <SignOutBtn onClick={() =>{
+            handleSignOut();
+            navigate("/");
+          }}>Logout</SignOutBtn> 
+      }
     </DropDownContainer>
   )
 }

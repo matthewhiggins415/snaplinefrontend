@@ -5,8 +5,8 @@ import { LogoContainer } from '../../styles/components/Logo.styles';
 export const Logo = () => {
   return (
     <LogoContainer to="/">
-      <p>Snap Line</p>
-      <LogoIcon />
+      <p title="everyone needs a hobby">Snap Line</p>
+      <LogoIcon/>
     </LogoContainer>
   )
 }
