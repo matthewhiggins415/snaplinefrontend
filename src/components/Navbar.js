@@ -33,7 +33,7 @@ const Navbar = ({ user, handleSignOut }) => {
         </RightContainer>
       </NavbarContainer>
       <SearchBar show={showSearchBar} close={handleSearchShow}/>
-      <DropDown user={user} show={showDropDown} handleDropShow={handleDropShow} setShowDropDown={setShowDropDown} handleSignOut={handleSignOut}/>
+      <DropDown user={user} show={showDropDown} handleDropShow={handleDropShow} setShowDropDown={setShowDropDown} handleSignOut={handleSignOut} />
     </>
   )
 };

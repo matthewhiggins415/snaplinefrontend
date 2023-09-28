@@ -14,7 +14,7 @@ const divStyle = {
   "textAlign": "center"
 }
 
-const Login = ({ user, setUser }) => {
+const Login = ({ user, setUser, notify }) => {
   const navigate = useNavigate();
 
   const handleCallbackResponse = (response) => {
@@ -25,6 +25,7 @@ const Login = ({ user, setUser }) => {
     setUser(userObject)
     document.getElementById("signInDiv").hidden = true;
     navigate("/");
+    notify('logged in')
   }
 
   useEffect (() => {

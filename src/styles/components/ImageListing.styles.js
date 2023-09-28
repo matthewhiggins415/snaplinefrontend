@@ -50,10 +50,6 @@ export const Location = styled(Link)`
   z-index: 6;
 `
 
-export const ImageLink = styled(Link)`
-  cursor: pointer;
-`
-
 export const Image = styled.img`
   width: 300px;
   height: 300px;
