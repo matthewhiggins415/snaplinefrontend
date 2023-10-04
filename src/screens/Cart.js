@@ -3,7 +3,7 @@ import React from 'react';
 import { ScreenContainer } from '../styles/screens/Cart.styles';
 import { BackBtn } from '../utils/BackBtn';
 
-const Cart = () => {
+const Cart = ({ user }) => {
   return (
     <ScreenContainer>
       <BackBtn />

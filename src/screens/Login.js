@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import jwt_decode from 'jwt-decode';
 import { useNavigate } from "react-router-dom";
+import { signIn } from '../api/auth'
 
 // Utils
 import { BackBtn } from '../utils/BackBtn';
@@ -20,8 +21,7 @@ const Login = ({ user, setUser, notify }) => {
   const handleCallbackResponse = (response) => {
     console.log("encoded JWT token: ", response.credential)
     console.log(response)
-    let userObject = jwt_decode(response.credential)
-    console.log("userObject: ", userObject)
+    let userObject = jwt_decode(response.credential) 
     setUser(userObject)
     document.getElementById("signInDiv").hidden = true;
     navigate("/");
@@ -45,15 +45,45 @@ const Login = ({ user, setUser, notify }) => {
     }
   })
 
+  const [formData, setFormData] = useState({
+    email: '', 
+    password: ''
+  })
+
+  const { email, password } = formData
+
+  const onChange = (e) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value
+    }))
+  }
+
+  const onSignIn = async (e) => {
+    e.preventDefault()
+
+    try {
+      let res = await signIn(formData);
+      console.log("res.data.user: ", res);
+      setUser(res.data.user);
+      navigate('/');
+      notify('login successful');
+    } catch(e) {
+      setFormData({ email: '', password: '' })
+      notify('login denied', 'danger')
+    }
+  }
+  
+
   return (
     <ScreenContainer>
       <BackBtn />
       <Container>
-        <Form>
+        <Form onSubmit={onSignIn}>
           <FormH1>Login</FormH1>
-          <FormInput placeholder='email' required/>
-          <FormInput placeholder='password' required/>
-          <FormBtn>Continue</FormBtn>
+          <FormInput type="text" name="email" value={email} placeholder="enter email" onChange={onChange} required/>
+          <FormInput type="password" name="password" value={password} placeholder="enter pw" onChange={onChange} required/>
+          <FormBtn type="submit">Continue</FormBtn>
           <div style={divStyle} id="signInDiv"></div>
         </Form>
       </Container>

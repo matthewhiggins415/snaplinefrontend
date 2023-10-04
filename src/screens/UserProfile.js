@@ -3,7 +3,10 @@ import React from 'react';
 import { ScreenContainer } from '../styles/screens/UserProfile.styles';
 import { BackBtn } from '../utils/BackBtn';
 
-const UserProfile = () => {
+const UserProfile = ({ user }) => {
+
+  console.log("user from profile screen", user); 
+  
   return (
     <ScreenContainer>
       <BackBtn />

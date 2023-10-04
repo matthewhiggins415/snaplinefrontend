@@ -25,7 +25,7 @@ import Register from './screens/Register';
 import Login from './screens/Login';
 import Cart from './screens/Cart';
 import UserProfile from './screens/UserProfile';
-
+import AddPhotosScreen from './screens/AddPhotos';
 
 // Basic Styling
 require('./App.css')
@@ -58,14 +58,14 @@ const App = () => {
       <Routes>
         <Route path='/' element={<Landing notify={notify}/>} />
         <Route path='/login' element={<Login user={user} setUser={setUser} notify={notify}/>}/>
-        <Route path='/register' element={<Register user={user} setUser={setUser}/>} />
+        <Route path='/register' element={<Register user={user} setUser={setUser} notify={notify}/>} />
         <Route path='/photographer/:id' element={<PhotographerProfile />} exact />
         <Route path='/location/:id' element={<LocationScreen />} exact />
         <Route path='/becomephotographer' element={<BecomePhotographer />} exact />
         <Route path='/helpcenter' element={<HelpCenter />} exact />
-        <Route path='/cart' element={<Cart />} exact />
-        <Route path='/profile/:id' element={<UserProfile />} exact />
-
+        <Route path='/cart' element={<Cart user={user}/>} exact />
+        <Route path='/profile/:id' element={<UserProfile user={user}/>} exact />
+        <Route path='/addphotos' element={<AddPhotosScreen user={user}/>} exact />
       </Routes>
     </Router>
   );

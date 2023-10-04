@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import jwt_decode from 'jwt-decode';
 import { useNavigate } from "react-router-dom";
+import { signUp } from '../api/auth';
 
 // Utils
 import { BackBtn } from '../utils/BackBtn';
@@ -14,7 +15,22 @@ const divStyle = {
   "textAlign": "center"
 }
 
-const Register = ({ user, setUser }) => {
+const Register = ({ user, setUser, notify }) => {
+  const [formData, setFormData] = useState({
+    email: '', 
+    password: '', 
+    passwordConfirmation: ''
+  })
+
+  const { email, password, passwordConfirmation } = formData
+
+  const onChange = (e) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value
+    }))
+  }
+
   const navigate = useNavigate();
 
   const handleCallbackResponse = (response) => {
@@ -26,6 +42,8 @@ const Register = ({ user, setUser }) => {
     document.getElementById("signInDiv").hidden = true;
     navigate("/");
   }
+
+
 
   useEffect (() => {
     /* global google */
@@ -44,16 +62,45 @@ const Register = ({ user, setUser }) => {
     }
   })
 
+  const onRegister = async (e) => {
+    e.preventDefault()
+    try {
+      // api call 
+      if (formData.password !== formData.passwordConfirmation) {
+        notify('passwords do NOT match', 'danger')
+      } else if (!formData.password || !formData.passwordConfirmation || !formData.email) {
+        notify('missing input', 'danger')
+        return
+      } else {
+        let res = await signUp(formData)
+        notify('registration successful') 
+        setUser(res.data.user)
+        navigate("/");
+      }
+
+    } catch(e) {
+      // empty form inputs
+      setFormData({
+        email: '', 
+        password: '', 
+        passwordConfirmation: ''
+      })
+
+      // danger message 
+      notify('registration failed', 'danger')
+    }
+  }
+
   return (
     <ScreenContainer>
       <BackBtn />
       <Container>
-        <Form>
+        <Form onSubmit={onRegister}>
           <FormH1>Register</FormH1>
-          <FormInput placeholder='email' required/>
-          <FormInput placeholder='password' required/>
-          <FormInput placeholder='confirm password' required/>
-          <FormBtn>Continue</FormBtn>
+          <FormInput type="text" name="email" value={email} placeholder="email" onChange={onChange} required />
+          <FormInput type="password" name="password" value={password} placeholder="password" onChange={onChange} required />
+          <FormInput type="password" name="passwordConfirmation" value={passwordConfirmation} placeholder="confirm password" onChange={onChange} required />
+          <FormBtn type="submit">Continue</FormBtn>
           <div style={divStyle} id="signInDiv"></div>
         </Form>
       </Container>
