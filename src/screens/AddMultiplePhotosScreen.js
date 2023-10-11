@@ -1,10 +1,17 @@
-import React, {useState} from 'react';
-import { ScreenContainer, UploadContainer, UploadBtn } from '../styles/screens/AddPhotos';
+import React, { useState } from 'react';
+import { ScreenContainer, UploadContainer, UploadBtn } from '../styles/screens/AddMultiplePhotos.styles';
 import { BackBtn } from '../utils/BackBtn';
 import { UploadIcon } from '../styles/icons/Upload';
+import { useNavigate } from "react-router-dom";
 
-const AddPhotosScreen = () => {
+const AddMultiplePhotos = ({ user }) => {
   const [files, setFiles] = useState([]);
+
+  const navigate = useNavigate();
+  
+  if (Object.keys(user).length === 0) {
+    navigate("/");
+  }
 
   const onImageChange = (e) => {
     const selectedFiles = e.target.files;
@@ -21,7 +28,8 @@ const AddPhotosScreen = () => {
     const formData = new FormData();
 
     for (const file of files) {
-      formData.append('s3Images', file)
+      formData.append('s3Images', file);
+      formData.append('photographer', user._id);
     }
 
     const result = await fetch('http://localhost:8080/upload', { method: 'POST', body: formData });
@@ -44,4 +52,4 @@ const AddPhotosScreen = () => {
   )
 }
 
-export default AddPhotosScreen
+export default AddMultiplePhotos

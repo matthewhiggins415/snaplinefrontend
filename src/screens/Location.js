@@ -6,7 +6,6 @@ import { BackBtn } from '../utils/BackBtn';
 // Styles
 import { ScreenContainer } from '../styles/screens/Location.styles'
 
-
 const LocationScreen = () => {
   return (
     <ScreenContainer>

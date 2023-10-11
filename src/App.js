@@ -25,7 +25,8 @@ import Register from './screens/Register';
 import Login from './screens/Login';
 import Cart from './screens/Cart';
 import UserProfile from './screens/UserProfile';
-import AddPhotosScreen from './screens/AddPhotos';
+import AddScreen from './screens/AddScreen';
+import AddMultiplePhotos from './screens/AddMultiplePhotosScreen';
 
 // Basic Styling
 require('./App.css')
@@ -65,7 +66,8 @@ const App = () => {
         <Route path='/helpcenter' element={<HelpCenter />} exact />
         <Route path='/cart' element={<Cart user={user}/>} exact />
         <Route path='/profile/:id' element={<UserProfile user={user}/>} exact />
-        <Route path='/addphotos' element={<AddPhotosScreen user={user}/>} exact />
+        <Route path='/add' element={<AddScreen user={user}/>} exact />
+        <Route path='/add/uploadmultiple' element={<AddMultiplePhotos user={user}/>} exact />
       </Routes>
     </Router>
   );

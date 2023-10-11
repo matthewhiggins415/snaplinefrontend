@@ -10,7 +10,7 @@ export const UserMenu = ({ user, handleDropShow }) => {
   return (
     <UserMenuContainer onClick={handleDropShow}>
       <Hamburger />
-      { Object.keys(user).length === 0 && user.picture !== '' ? <User /> : <UserImg alt="user profile" src={user.picture}></UserImg>}
+      { user.picture === '' || user.picture === undefined ? <User /> : <UserImg alt="user profile" src={user.picture}></UserImg>}
     </UserMenuContainer>
   )
 }

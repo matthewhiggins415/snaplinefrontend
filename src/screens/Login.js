@@ -64,10 +64,16 @@ const Login = ({ user, setUser, notify }) => {
 
     try {
       let res = await signIn(formData);
-      console.log("res.data.user: ", res);
-      setUser(res.data.user);
-      navigate('/');
-      notify('login successful');
+
+      if (res.status === 200) {
+        setFormData({ email: '', password: '' })
+        notify('login denied', 'danger')
+      } else {
+        console.log("res.data.user: ", res);
+        setUser(res.data.user);
+        navigate('/');
+        notify('login successful');
+      }
     } catch(e) {
       setFormData({ email: '', password: '' })
       notify('login denied', 'danger')

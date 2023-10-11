@@ -32,7 +32,7 @@ const DropDown = ({ user, show, setShowDropDown, handleSignOut }) => {
       }
       {
         user.isPhotographer === true 
-        ? <DropDownBtn to="/addphotos">Add new photos</DropDownBtn> 
+        ? <DropDownBtn to="/add">Add new photos</DropDownBtn> 
         : ''
       }
       {
