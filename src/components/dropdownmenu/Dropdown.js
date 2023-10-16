@@ -26,7 +26,7 @@ const DropDown = ({ user, show, setShowDropDown, handleSignOut }) => {
       { Object.keys(user).length === 0 ? 
           <DropDownBtn to="/login">Login</DropDownBtn> :
           <>
-            <DropDownBtn to="/profile/matt">Profile</DropDownBtn>
+            <DropDownBtn to={`/profile/${user._id}`}>Profile</DropDownBtn>
             <DropDownBtn to="/cart">Cart</DropDownBtn>
           </>
       }
