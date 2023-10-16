@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const ScreenContainer = styled.div`
   width: 100%;
@@ -69,4 +70,12 @@ export const FormBtn = styled.button`
     background-color: red;
     color: white;
   }
+`
+
+export const ToRegister = styled(Link)`
+  text-style: none;
+  color: black;
+  text-align: center;
+  margin-top: 20px;
+  text-decoration: none;
 `

@@ -47,6 +47,7 @@ const App = () => {
     const handleSignOut = (e) => {
       setUser({})
       console.log(document.getElementById("signInDiv"))
+      localStorage.removeItem("token");
       notify('signed out')
       // document.getElementById("signInDiv").hidden = false;
     }
@@ -62,10 +63,10 @@ const App = () => {
         <Route path='/register' element={<Register user={user} setUser={setUser} notify={notify}/>} />
         <Route path='/photographer/:id' element={<PhotographerProfile />} exact />
         <Route path='/location/:id' element={<LocationScreen />} exact />
-        <Route path='/becomephotographer' element={<BecomePhotographer />} exact />
+        <Route path='/becomephotographer' element={<BecomePhotographer user={user} notify={notify}/>} exact />
         <Route path='/helpcenter' element={<HelpCenter />} exact />
         <Route path='/cart' element={<Cart user={user}/>} exact />
-        <Route path='/profile/:id' element={<UserProfile user={user}/>} exact />
+        <Route path='/profile/:id' element={<UserProfile user={user} notify={notify}/>} exact />
         <Route path='/add' element={<AddScreen user={user}/>} exact />
         <Route path='/add/uploadmultiple' element={<AddMultiplePhotos user={user}/>} exact />
       </Routes>

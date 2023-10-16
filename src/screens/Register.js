@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import jwt_decode from 'jwt-decode';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { signUp } from '../api/auth';
 
 // Utils
 import { BackBtn } from '../utils/BackBtn';
 
 // Styles
-import { ScreenContainer, Container, Form, FormH1, FormBtn, FormInput } from '../styles/screens/Register.styles'
+import { ScreenContainer, Container, Form, FormH1, FormBtn, FormInput, ToLogin } from '../styles/screens/Register.styles'
 
 const divStyle = {
   "border": "none",
@@ -75,6 +75,7 @@ const Register = ({ user, setUser, notify }) => {
         let res = await signUp(formData)
         notify('registration successful') 
         setUser(res.data.user)
+        localStorage.setItem('token', res.data.user.token)
         navigate("/");
       }
 
@@ -101,7 +102,8 @@ const Register = ({ user, setUser, notify }) => {
           <FormInput type="password" name="password" value={password} placeholder="password" onChange={onChange} required />
           <FormInput type="password" name="passwordConfirmation" value={passwordConfirmation} placeholder="confirm password" onChange={onChange} required />
           <FormBtn type="submit">Continue</FormBtn>
-          <div style={divStyle} id="signInDiv"></div>
+          {/* <div style={divStyle} id="signInDiv"></div> */}
+          <ToLogin to="/login">to login</ToLogin>
         </Form>
       </Container>
     </ScreenContainer>

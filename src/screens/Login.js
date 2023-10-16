@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import jwt_decode from 'jwt-decode';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { signIn } from '../api/auth'
 
 // Utils
 import { BackBtn } from '../utils/BackBtn';
 
 // Styles
-import { ScreenContainer, Container, Form, FormH1, FormBtn, FormInput } from '../styles/screens/Login.styles'
+import { ScreenContainer, Container, Form, FormH1, FormBtn, FormInput, ToRegister } from '../styles/screens/Login.styles'
 
 const divStyle = {
   "border": "none",
@@ -64,7 +64,7 @@ const Login = ({ user, setUser, notify }) => {
 
     try {
       let res = await signIn(formData);
-
+      localStorage.setItem('token', res.data.user.token)
       if (res.status === 200) {
         setFormData({ email: '', password: '' })
         notify('login denied', 'danger')
@@ -90,7 +90,8 @@ const Login = ({ user, setUser, notify }) => {
           <FormInput type="text" name="email" value={email} placeholder="enter email" onChange={onChange} required/>
           <FormInput type="password" name="password" value={password} placeholder="enter pw" onChange={onChange} required/>
           <FormBtn type="submit">Continue</FormBtn>
-          <div style={divStyle} id="signInDiv"></div>
+          {/* <div style={divStyle} id="signInDiv"></div> */}
+          <ToRegister to="/register">to register</ToRegister>
         </Form>
       </Container>
     </ScreenContainer>

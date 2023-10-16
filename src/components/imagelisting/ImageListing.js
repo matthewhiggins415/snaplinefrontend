@@ -7,7 +7,7 @@ const ImageListing = ({ notify }) => {
     <ImageListingContainer>
       <div>
         <Overlay />
-        <Image src="https://www.surfer.com/.image/t_share/MTk2Mjc3MTUzMDM1Mzk2NDAw/ryan-burch-fiji.jpg" img />
+        <Image src="https://www.surfer.com/.image/t_share/MTk2Mjc3MTUzMDM1Mzk2NDAw/ryan-burch-fiji.jpg" />
       </div>
       <ImageListingInfo>
         <Location to="/location/cronkitebeach">Fort Cronkite/Rodeo Beach</Location>
