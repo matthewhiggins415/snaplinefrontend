@@ -13,6 +13,13 @@ export const ScreenContainer = styled.div`
   }
 `
 
+export const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+`
+
 export const UploadContainer = styled.div`
   width: fit-content;
   margin: 20px auto;
@@ -26,6 +33,7 @@ export const UploadContainer = styled.div`
 `
 
 export const UploadBtn = styled.button`
+  display: ${(props) => (props.showUploadBtn ? "flex" : "none")};
   padding: 10px 30px;
   cursor: pointer;
   margin-top: 10px;
