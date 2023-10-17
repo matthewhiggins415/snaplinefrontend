@@ -21,12 +21,8 @@ const AddScreen = ({ user }) => {
         <h1>Add Media</h1>
         <h4>Every piece of media you post will need a price, location, and date.</h4>
         <br></br>
-        <h4>If every piece of media is from the same price, same location, and date then upload by bulk in one group.</h4>
-        <br></br>
-        <h4>Do you want to add your media idividually or multiple at a time?</h4>
         <LinkContainer>
-          <UploadLink to="/add/uploadsingle">add media one by one</UploadLink>
-          <UploadLink to="/add/uploadmultiple">add media in bulk</UploadLink>
+          <UploadLink to="/addphotos">add your media</UploadLink>
         </LinkContainer>
       </Instructions>
     </ScreenContainer>

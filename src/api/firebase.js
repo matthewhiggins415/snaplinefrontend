@@ -3,6 +3,7 @@ import apiUrl from "../apiConfig"
 
 export const uploadFiles = (user, data) => {
   console.log("data: ", data)
+
   return axios.post(apiUrl + '/upload', 
     data,
     {
