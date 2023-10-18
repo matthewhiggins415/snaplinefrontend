@@ -21,6 +21,7 @@ export const Instructions = styled.div`
   max-width: 350px;
   margin: 0 auto;
 
+
   h1 {
     margin-bottom: 30px;
   }

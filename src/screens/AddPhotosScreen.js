@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ScreenContainer, UploadContainer, UploadBtn, Form, FileLabel, RemoveFilesBtn } from '../styles/screens/AddPhotosScreen.styles';
+import { ScreenContainer, UploadContainer, UploadBtn, Form, FileLabel, RemoveFilesBtn, Img, ImgContainer, AlbumHeader, AlbumInput, ImgFormInput } from '../styles/screens/AddPhotosScreen.styles';
 import { BackBtn } from '../utils/BackBtn';
 import { UploadIcon } from '../styles/icons/Upload';
 import { useNavigate } from "react-router-dom";
@@ -14,6 +14,7 @@ const AddPhotos = ({ user, notify }) => {
   const [showUploadBtn, setShowUploadBtn] = useState(false);
   const [loading, setLoading] = useState(false);
   const [resFileNum, setResFileNum] = useState(0)
+  const [downloadedURLs, setDownloadedURLs] = useState([]);
 
   const navigate = useNavigate();
   
@@ -64,13 +65,14 @@ const AddPhotos = ({ user, notify }) => {
         setLoading(true)
         const response = await uploadFiles(user, formData)
         console.log("response: ", response)
-        console.log("filessss: ", files)
         
         if (response.data.msg === "Images uploaded successfully") {
           setLoading(false);
           notify('successfully uploaded media');
           setResFileNum(response.data.downloadURLs.length)
-          console.log("resFileNum: ", resFileNum)
+          console.log("response: ", response)
+          console.log("response.data.downloadURLs: ", response.data.downloadURLs)
+          setDownloadedURLs(response.data.downloadURLs)
         }
       } catch (error) {
         console.error('Error uploading images:', error);
@@ -137,6 +139,26 @@ const AddPhotos = ({ user, notify }) => {
           </>
         }
       </UploadContainer>
+      <ImgContainer>
+        <AlbumHeader>
+          <h1>Add Album Details</h1>
+          <div>
+            <AlbumInput placeholder="location" type="text" required/>
+            <AlbumInput placeholder="date" type="date" required/>
+          </div>
+        </AlbumHeader>
+        { downloadedURLs?.map((item, index) => (
+          <div>
+            <Img key={index + 1} alt="downloaded" src={item} />
+            <form>
+              <ImgFormInput placeholder='price' type="number" required/>
+              <button>submit</button>
+              <button>remove</button>
+            </form>
+          </div>
+          ))
+        }
+      </ImgContainer>
     </ScreenContainer>
   )
 }
