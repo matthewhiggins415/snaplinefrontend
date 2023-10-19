@@ -24,4 +24,5 @@ export const UserImg = styled.img`
   width: 30px;
   border-radius: 25px;
   margin-right: 5px;
+  object-fit: cover;
 `

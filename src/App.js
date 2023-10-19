@@ -66,7 +66,7 @@ const App = () => {
         <Route path='/becomephotographer' element={<BecomePhotographer user={user} notify={notify}/>} exact />
         <Route path='/helpcenter' element={<HelpCenter />} exact />
         <Route path='/cart' element={<Cart user={user}/>} exact />
-        <Route path='/profile/:id' element={<UserProfile user={user} notify={notify}/>} exact />
+        <Route path='/profile/:id' element={<UserProfile user={user} notify={notify} setUser={setUser}/>} exact />
         <Route path='/add' element={<AddScreen user={user}/>} exact />
         <Route path='/addphotos' element={<AddPhotos user={user} notify={notify}/>} exact />
       </Routes>

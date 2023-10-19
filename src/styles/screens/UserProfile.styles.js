@@ -32,18 +32,15 @@ export const UserImg = styled.img`
   
 `
 
-export const ChangeImg = styled.button`
-  width: 30%;
+export const ChangeImg = styled.img`
+  width: 200px;
+  height: 200px;
   padding: 5px;
   background-color: #F5F5F5;
-  border-radius: 20px;
-  border: none;
-  cursor: pointer;
-  transition: 150ms ease-in-out;
+  border-radius: 50%;
+  border: 2px solid #F5F5F5;
+  object-fit: cover;
 
-  &:hover {
-    background-color: lightgray;
-  }  
 `
 
 export const DeleteProfile = styled.button`
@@ -53,6 +50,56 @@ export const DeleteProfile = styled.button`
   border-radius: 20px;
   border: none;
   cursor: pointer;
+  transition: 150ms ease-in-out;
+
+  &:hover {
+    background-color: red;
+  }
+`
+
+export const UserImageForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  input {
+    width: 50%;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    margin: 10px auto;
+    background-color: white;
+    transition: 150ms ease-in-out;
+
+    &:hover {
+      background-color: #F5F5F5;
+    }
+  }
+`
+
+export const UploadBtn = styled.button`
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  margin: 10px auto;
+  background-color: white;
+  transition: 150ms ease-in-out;
+
+  &:hover {
+    background-color: #F5F5F5;
+  }
+`
+
+export const RemoveBtn = styled.button`
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  margin: 0px auto;
+  background-color: white;
   transition: 150ms ease-in-out;
 
   &:hover {

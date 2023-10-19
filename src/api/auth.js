@@ -34,6 +34,18 @@ export const signOut = (user) => {
   })
 }
 
+// update User's profile image
+export const updateUserProfileImage = (user, data) => {
+  return axios.put(apiUrl + `/user-image-update`, 
+    {data: data},
+    {
+      headers: {
+        Authorization: `Bearer ${user.token}`
+      }
+    }
+  )
+}
+
 // update user with new stripe id
 export const updateUserStripeId = (user, newId) => {
   return axios.patch(apiUrl + `/user/${user._id}/update-id`, 

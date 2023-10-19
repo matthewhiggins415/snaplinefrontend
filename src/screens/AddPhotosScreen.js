@@ -57,10 +57,7 @@ const AddPhotos = ({ user, notify }) => {
 
     for (const file of files) {
       formData.append('images', file);
-      formData.append('location', normalFormData.location);
-      formData.append('price', normalFormData.price);
-      formData.append('date', normalFormData.date);
-
+      
       try {
         setLoading(true)
         const response = await uploadFiles(user, formData)
