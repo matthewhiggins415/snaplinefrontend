@@ -10,6 +10,7 @@ export const ScreenContainer = styled.div`
 
   h1 {
     padding: 10px;
+    text-align: center;
   }
 `
 

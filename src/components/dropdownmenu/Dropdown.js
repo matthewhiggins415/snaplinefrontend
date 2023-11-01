@@ -36,6 +36,11 @@ const DropDown = ({ user, show, setShowDropDown, handleSignOut }) => {
         : ''
       }
       {
+        user.isPhotographer === true 
+        ? <DropDownBtn to={`/photographer/${user._id}`}>My Albums</DropDownBtn> 
+        : ''
+      }
+      {
         Object.keys(user).length === 0 ? 
           <DropDownBtn to="/register">Sign up</DropDownBtn> :
           <></>

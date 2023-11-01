@@ -17,12 +17,14 @@ const divStyle = {
 
 const Register = ({ user, setUser, notify }) => {
   const [formData, setFormData] = useState({
+    firstName: '', 
+    lastName: '',
     email: '', 
     password: '', 
     passwordConfirmation: ''
   })
 
-  const { email, password, passwordConfirmation } = formData
+  const { firstName, lastName, email, password, passwordConfirmation } = formData
 
   const onChange = (e) => {
     setFormData((prevState) => ({
@@ -72,6 +74,7 @@ const Register = ({ user, setUser, notify }) => {
         notify('missing input', 'danger')
         return
       } else {
+        console.log("formData", formData)
         let res = await signUp(formData)
         notify('registration successful') 
         setUser(res.data.user)
@@ -82,6 +85,8 @@ const Register = ({ user, setUser, notify }) => {
     } catch(e) {
       // empty form inputs
       setFormData({
+        firstName: '', 
+        lastName: '',
         email: '', 
         password: '', 
         passwordConfirmation: ''
@@ -98,6 +103,8 @@ const Register = ({ user, setUser, notify }) => {
       <Container>
         <Form onSubmit={onRegister}>
           <FormH1>Register</FormH1>
+          <FormInput type="text" name="firstName" value={firstName} placeholder="first name" onChange={onChange} required />
+          <FormInput type="text" name="lastName" value={lastName} placeholder="last name" onChange={onChange} required />
           <FormInput type="text" name="email" value={email} placeholder="email" onChange={onChange} required />
           <FormInput type="password" name="password" value={password} placeholder="password" onChange={onChange} required />
           <FormInput type="password" name="passwordConfirmation" value={passwordConfirmation} placeholder="confirm password" onChange={onChange} required />
