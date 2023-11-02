@@ -30,11 +30,11 @@ export const Overlay = styled.div`
   &:after {
     position: absolute;
     width: 100%;
-    height: 300px;
+    height: 350px;
     overflow: hidden;
     top: -10px;
     left: 10px;
-    content: "Doug Flaherty Doug Flaherty Doug Flaherty Doug Flaherty";
+    content: ${(props) => (props.photographerName ? `"${props.photographerName + " " + props.photographerName}"` : '""')};
     transform: rotate(-30deg);
     font-size: 5em;
     color: rgba(255, 255, 255, 0.4);

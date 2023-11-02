@@ -1,15 +1,15 @@
 import React from 'react';
-import { ImageListingsContainer, ScreenContainer } from '../styles/screens/Landing.styles';
-import ImageListing from '../components/imagelisting/ImageListing';
+import Hero from '../components/hero/Hero';
+import FeaturedPhotographers from '../components/featuredphotographers/featuredPhotographers';
+import FeaturedImages from '../components/featuredimages/featuredImages';
 
 const Landing = ({ notify }) => {
   return (
-    <ScreenContainer>
-      <h1>Most Recent</h1>
-      <ImageListingsContainer>
-        <ImageListing notify={notify}/>
-      </ImageListingsContainer>
-    </ScreenContainer> 
+    <>
+      <Hero />
+      <FeaturedPhotographers />
+      <FeaturedImages />
+    </>
   )
 }
 

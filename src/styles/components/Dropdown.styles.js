@@ -13,6 +13,7 @@ const fadeIn = keyframes`
 export const DropDownContainer = styled.div`
   min-width: 300px;
   border-radius: 20px;
+  z-index: 12;
   border: 1px solid #ececec;
   display: ${(props) => (props.show ? "flex" : "none")};
   flex-direction: column;

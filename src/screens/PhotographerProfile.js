@@ -1,24 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import { getAllAlbums } from '../api/album';
 // Styles
-import { ScreenContainer, AlbumsContainer, ProfileContainer, Album, ProfileImg } from '../styles/screens/PhotographerProfile.styles'
+import { ScreenContainer, AlbumsContainer, AlbumListingsContainer, ProfileContainer, Album, ProfileImg, ShowMoreBtn } from '../styles/screens/PhotographerProfile.styles'
+
+import ProfilePhotos from '../components/profilephotos/profilePhotos'
+
+import { getAllImagesOfAnAlbum } from '../api/image'
 
 // Utils 
 import { BackBtn } from '../utils/BackBtn';
 
-const PhotographerProfile = ({ user }) => {
-  console.log("user:", user)
+const PhotographerProfile = ({ user, notify }) => {
   const [albums, setAlbums] = useState([]);
-
+  const [photos, setPhotos] = useState([]);
+ 
   useEffect(() => {
     const fetchAlbums = async (user) => {
       const response = await getAllAlbums(user)
-      console.log("response: ", response)
       setAlbums(response.data.albums)
     }
 
     fetchAlbums(user)
   }, []);
+
+  const getPhotos = async (user, id) => {
+    try {
+      const response = await getAllImagesOfAnAlbum(user, id); 
+      setPhotos(response.data.images)
+    } catch(error) {
+      console.log(error)
+    }
+  }
 
   return (
     <ScreenContainer>
@@ -34,18 +46,22 @@ const PhotographerProfile = ({ user }) => {
       </ProfileContainer>
       <AlbumsContainer>
         <h1>Recent Albums</h1>
-        {albums.map((album) => (
-          <Album key={album._id}>
-            <p>{album.sport}</p>
-            <p>{album.location}</p>
-            <p>{album.images.length + " images"}</p>
-            <p>{album.date}</p>
-          </Album>
-        ))}
+        <AlbumListingsContainer>
+          {albums.map((album) => (
+            <Album 
+              key={album._id} 
+              onClick={() => {getPhotos(user, album._id)}}
+            > 
+              <p>{album.sport}</p>
+              <p>{album.location}</p>
+              <p>{album.images.length + " images"}</p>
+              <p>{album.date}</p>
+            </Album>
+          ))}
+        </AlbumListingsContainer>
+        <ShowMoreBtn>show more</ShowMoreBtn>
       </AlbumsContainer>
-      <div>
-        <h1>Photos</h1>
-      </div>
+      <ProfilePhotos photos={photos} user={user} notify={notify}/>
     </ScreenContainer>
   )
 }
