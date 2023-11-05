@@ -13,7 +13,6 @@ import 'react-toastify/dist/ReactToastify.css';
 
 // Components 
 import Navbar from './components/Navbar';
-import Iconbar from './components/Iconbar';
 
 // Screens 
 import Landing from './screens/Landing';
@@ -56,7 +55,6 @@ const App = () => {
     <Router> 
       <Navbar handleSignOut={handleSignOut} user={user}/>
       <ToastContainer theme="light" position="top-left" autoClose={1200}/>
-      <Iconbar />
       <Routes>
         <Route path='/' element={<Landing notify={notify} user={user}/>} />
         <Route path='/login' element={<Login user={user} setUser={setUser} notify={notify}/>}/>

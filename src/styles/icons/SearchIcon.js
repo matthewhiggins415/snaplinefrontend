@@ -1,6 +1,6 @@
 import { BsSearch } from 'react-icons/bs'
 
-const style = { color: "red", fontSize: "1.8em", "marginRight": "15px" }
+const style = { color: "red", fontSize: "2em" }
 
 export const SearchIcon = () => {
   return (

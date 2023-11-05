@@ -50,33 +50,12 @@ export const LeftContainer = styled.div`
   flex: 20%;
   display: flex;
   align-items: center;
-  padding-left: 5%;
-
-  @media (max-width: 950px) {
-    /* Styles for screens up to 768px wide */
-    display: none;
-  }
+  padding-left: 20px;
 `
-
-export const CenterContainer = styled.div`
-  flex: 50%;
-  display: flex;
-  align-items: center;
-  padding-left: 5%;
-`
-
 
 export const RightContainer = styled.div`
-  flex: 30%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-right: 50px;
-
-  @media (max-width: 950px) {
-    /* Styles for screens up to 768px wide */
-    display: flex;
-    flex-direction: column;
-    padding: 0px;
-  }
+  padding-right: 20px;
 `

@@ -1,29 +1,54 @@
 import styled from 'styled-components';
 
-export const SeachBarContainer = styled.button`
-  min-width: 420px; 
-  font-size: small;
-  font-family: Arial, Helvetica, sans-serif;
-  letter-spacing: 1.2px;  display: flex;
-  justify-content: space-between;
+export const SearchContainer = styled.div`
+  min-height: 100px;
+  width: 100%;
+  display: flex;
   align-items: center;
-  padding: 12px;
-  border: 1px solid #ECECEC;
-  border-radius: 20px;
-  transition: 150ms ease-in-out;
-  background-color: white;
-  cursor: pointer;
-  box-shadow: 0px 2px 2px -2px rgba(0, 0, 0, 0.85); 
+  justify-content: center;
+`
 
-  &:hover {
-    box-shadow: 0 3px 10px -3px rgba(0, 0, 0, 0.85);
+export const Form = styled.form`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 400px;
+  height: 50px;
+  border: 1px solid red;
+  border-radius: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+  @media (min-width: 950px) {
+    width: 600px;
   }
 `
 
-export const SearchParamContainer = styled.div`
-  width: 100%;
-  display: flex;
-  align-items: center; 
-  justify-content: space-evenly;
-  text-align: center;
+export const Input = styled.input`
+  width: 80%;
+  height: 45px;
+  padding-left: 20px;
+  border: none;
+  outline: none;
+  font-size: medium;
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: 1.2px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+`
+
+export const Btn = styled.button`
+  width: 20%;
+  color: white;
+  height: 50px;
+  background-color: red;
+  font-size: medium;
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: 1.2px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+
 `

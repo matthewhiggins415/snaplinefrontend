@@ -1,18 +1,12 @@
-import React from 'react';
-import { ExitIcon } from '../../styles/icons/ExitIcon';
-import { SearchContainer, CloseBtn, Form, FormInput, CenterFormInput, FormBtn } from '../../styles/components/Search.styles';
+import React from 'react'
+import { SearchContainer, Form, Input, Btn } from '../../styles/components/SearchBar.styles'
 
-const SearchBar = ({ show, close }) => {
+const SearchBar = () => {
   return (
-    <SearchContainer show={show}>
-      <CloseBtn onClick={close}>
-        <ExitIcon />
-      </CloseBtn>
+    <SearchContainer>
       <Form>
-        <FormInput placeholder='Search Sport'/>
-        <CenterFormInput placeholder='Search Location'/>
-        <FormInput placeholder='Search Date'/>
-        <FormBtn>Search</FormBtn>
+        <Input type="text" placeholder="find a photographer" required/>
+        <Btn type="submit">search</Btn>
       </Form>
     </SearchContainer>
   )
