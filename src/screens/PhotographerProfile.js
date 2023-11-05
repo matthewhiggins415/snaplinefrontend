@@ -25,7 +25,7 @@ const PhotographerProfile = ({ user, notify }) => {
 
   const getPhotos = async (user, id) => {
     try {
-      const response = await getAllImagesOfAnAlbum(user, id); 
+      const response = await getAllImagesOfAnAlbum(id); 
       setPhotos(response.data.images)
     } catch(error) {
       console.log(error)

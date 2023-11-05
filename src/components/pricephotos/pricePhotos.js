@@ -13,7 +13,7 @@ const PricePhotos = ({ user, notify, albumID}) => {
     async function getImages(user, albumID) {
       try {
         console.log("albumID: ", albumID)
-        const response = await getAllImagesOfAnAlbum(user, albumID);
+        const response = await getAllImagesOfAnAlbum(albumID);
         console.log("response", response)
         setImages(response.data.images)
       } catch (error) {

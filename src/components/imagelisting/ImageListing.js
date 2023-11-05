@@ -2,14 +2,11 @@ import React, { useState, useEffect} from 'react';
 import { Overlay, ImageListingContainer, ImageListingInfo, Image, BottomInfo, ReviewInfo, Location, PhotographerInfoLink, PriceContainer, OriginalPrice} from '../../styles/components/ImageListing.styles';
 import { StarIcon } from '../../styles/icons/StarIcon';
 
-const ImageListing = ({ notify, listing, user }) => {
-  const { firstName, lastName } = user
-  const photographerName = firstName + " " + lastName;
-
+const ImageListing = ({ notify, listing, name }) => {
   return (
     <ImageListingContainer>
       <div>
-        <Overlay photographerName={photographerName} />
+        <Overlay photographerName={name} />
         <Image src={listing.url} />
       </div>
       <ImageListingInfo>
@@ -17,7 +14,7 @@ const ImageListing = ({ notify, listing, user }) => {
         <p>{listing.date}</p>
         <BottomInfo>
           <PhotographerInfoLink to="/photographer/dougflaherty">
-            <h4>{photographerName}</h4>
+            <h4>{name}</h4>
             <ReviewInfo>
               <StarIcon />
               <h4>4.95 (27)</h4>

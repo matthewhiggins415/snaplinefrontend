@@ -14,13 +14,8 @@ export const createImage = (data, user) => {
 }
 
 // get all images of an album 
-export const getAllImagesOfAnAlbum = (user, id) => {
-  return axios.get(apiUrl + `/album/${id}/images`, 
-  {
-    headers: {
-      Authorization: `Bearer ${user.token}`
-    }
-  })
+export const getAllImagesOfAnAlbum = (id) => {
+  return axios.get(apiUrl + `/album/${id}/images`)
 }
 
 // update image with prices
@@ -33,4 +28,10 @@ export const updateImageWithPricing = (id, data, user) => {
         Authorization: `Bearer ${user.token}`
       }
     })
+}
+
+
+// get all recent images that are not purchased 
+export const getRecentUnpurchasedImages = () => {
+  return axios.get(apiUrl + `/recent/images`)
 }

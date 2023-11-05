@@ -23,7 +23,7 @@ const FeaturedPhotographers = () => {
           <FeaturedPhotographerContainer key={photographer._id}>
             <FeaturedPhotographerImage src={photographer.picture} />
             <FeaturedNameContainer>
-              <NameLink to="/piublic/profile">{photographer.firstName + " " + photographer.lastName}</NameLink>
+              <NameLink to="/public/profile">{photographer.firstName + " " + photographer.lastName}</NameLink>
               <p>32 subscribers</p>
             </FeaturedNameContainer>
           </FeaturedPhotographerContainer>

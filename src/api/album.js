@@ -12,9 +12,14 @@ export const createAlbum = (data, user) => {
     })
 }
 
-// get all albums of a photographer
+// get all albums of a photographer as photographer 
 export const getAllAlbums = (user) => {
   return axios.get(apiUrl + `/albums/${user._id}`)
+}
+
+//get all albums of a photographer as a user
+export const getAllPublicAlbums = (id) => {
+  return axios.get(apiUrl + `/albums/${id}`)
 }
 
 // get an individual album of a photographer

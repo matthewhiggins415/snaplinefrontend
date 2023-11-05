@@ -26,6 +26,7 @@ import Login from './screens/Login';
 import Cart from './screens/Cart';
 import UserProfile from './screens/UserProfile';
 import AddScreen from './screens/AddScreen';
+import PublicPhotographer from './screens/PublicPhotographer'
 
 // Basic Styling
 require('./App.css')
@@ -57,10 +58,11 @@ const App = () => {
       <ToastContainer theme="light" position="top-left" autoClose={1200}/>
       <Iconbar />
       <Routes>
-        <Route path='/' element={<Landing notify={notify}/>} />
+        <Route path='/' element={<Landing notify={notify} user={user}/>} />
         <Route path='/login' element={<Login user={user} setUser={setUser} notify={notify}/>}/>
         <Route path='/register' element={<Register user={user} setUser={setUser} notify={notify}/>} />
         <Route path='/photographer/:id' element={<PhotographerProfile user={user} notify={notify} />} exact />
+        <Route path='/public/photographer/:id' element={<PublicPhotographer user={user} notify={notify} />} exact />
         <Route path='/location/:id' element={<LocationScreen />} exact />
         <Route path='/becomephotographer' element={<BecomePhotographer user={user} notify={notify}/>} exact />
         <Route path='/helpcenter' element={<HelpCenter />} exact />

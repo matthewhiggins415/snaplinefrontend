@@ -6,7 +6,7 @@ const ProfilePhotos = ({ photos, user, notify }) => {
   return (
     <ProfilePhotosContainer>
       {photos.map((listing) => (
-        <ImageListing key={listing._id} listing={listing} user={user} notify={notify}/>
+        <ImageListing key={listing._id} listing={listing} name={listing.photographerName} notify={notify}/>
       ))}
     </ProfilePhotosContainer>
   )
