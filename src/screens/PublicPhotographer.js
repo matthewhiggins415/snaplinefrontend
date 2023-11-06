@@ -37,9 +37,11 @@ const PublicPhotographer = ({ user, notify }) => {
 
       setLoading(true)
       
-      const imageResponse = await getAllImagesOfAnAlbum(albumResponse.data.albums[0]._id);
-      console.log("image response", imageResponse);
-      setImages(imageResponse.data.images)
+      if (albumResponse.data.albums.length > 0) {
+        const imageResponse = await getAllImagesOfAnAlbum(albumResponse.data.albums[0]._id);
+        console.log("image response", imageResponse);
+        setImages(imageResponse.data.images)
+      }
 
       setLoading(false)
     }
@@ -73,20 +75,21 @@ const PublicPhotographer = ({ user, notify }) => {
         </PhotographerInfo>
       </PhotographerContainer>
       <AlbumCollectionContainer>
-        {albums.map((album) => (
+        {Object.keys(albums).length > 0 ? albums.map((album) => (
           <Album onClick={() => handleClick(album._id)} key={album._id}>
             <h2>{album.location}</h2>
             <h2>{album.sport}</h2>
             <h2>{album.date}</h2>
           </Album>
-        ))}
+        )) : <p>no albums</p>
+      }
       </AlbumCollectionContainer>
       <ImageContainer>
-        <ImageContainerAlbumInfo>
+        {Object.keys(albums).length > 0 ? <ImageContainerAlbumInfo>
           <p>{selectedAlbum.location}</p> 
           <p>{selectedAlbum.sport}</p>    
           <p>{selectedAlbum.date}</p> 
-        </ImageContainerAlbumInfo>
+        </ImageContainerAlbumInfo> : <p>no albums selected</p>}
         <ImageListingsContainer>
           {loading === "true" ? <p>Loading..</p> : images.map((image) => (
             <ImageListing notify={notify} listing={image} name={image.photographerName}/>

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
-  height: 75vh;
+  min-height: 75vh;
   padding: 20px;
   overflow: none;
   overflow-y: scroll;

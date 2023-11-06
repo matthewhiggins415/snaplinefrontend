@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Container, FeaturedPhotographerImage, FeaturedNameContainer, FeaturedPhotographerContainer, SectionTitle, NameLink } from '../../styles/components/FeaturedPhotographers.styles';
+import { Container, FeaturedPhotographerImage, FeaturedNameContainer, PhotographerContainer, FeaturedPhotographerContainer, SectionTitle, Name } from '../../styles/components/FeaturedPhotographers.styles';
 import { getFeaturedPhotographers } from '../../api/photographer';
 
 const FeaturedPhotographers = () => {
   const [photographers, setPhotographers] = useState([])
+
+  console.log("photographers: ", photographers)
 
   useEffect(() => {
     const getPhotographers = async () => {
@@ -18,17 +20,16 @@ const FeaturedPhotographers = () => {
   return (
     <Container>
       <SectionTitle>Featured Photographers</SectionTitle>
-      <div>
+      <PhotographerContainer>
         {photographers.map((photographer) => (
-          <FeaturedPhotographerContainer key={photographer._id}>
+          <FeaturedPhotographerContainer to={`/public/photographer/${photographer._id}`} key={photographer._id}>
             <FeaturedPhotographerImage src={photographer.picture} />
             <FeaturedNameContainer>
-              <NameLink to="/public/profile">{photographer.firstName + " " + photographer.lastName}</NameLink>
-              <p>32 subscribers</p>
+              <Name>{photographer.firstName + " " + photographer.lastName}</Name>
             </FeaturedNameContainer>
           </FeaturedPhotographerContainer>
         ))}
-      </div>
+      </PhotographerContainer>
 
     </Container>
   )

@@ -10,7 +10,6 @@ const AddPhotos = ({ user, notify, setStepTwo, setStepThree, albumID }) => {
   const [files, setFiles] = useState([]);
   const [showUploadBtn, setShowUploadBtn] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [index, setIndex] = useState(1)
 
   const navigate = useNavigate();
   
@@ -34,11 +33,11 @@ const AddPhotos = ({ user, notify, setStepTwo, setStepThree, albumID }) => {
       alert('please select an image/video')
     }
 
+
     for (const file of files) {
       const formData = new FormData();
       formData.append('images', file);
       formData.append('albumID', albumID);
-      console.log(`Index: ${index} of ${files.length}` );
 
       try {
         setLoading(true)
@@ -47,7 +46,6 @@ const AddPhotos = ({ user, notify, setStepTwo, setStepThree, albumID }) => {
         console.log("response: ", response)
         
         if (response.status === 201) {
-          setIndex(index + 1)
           setLoading(false);
           notify('successfully uploaded media');
           console.log("response: ", response)
@@ -58,7 +56,6 @@ const AddPhotos = ({ user, notify, setStepTwo, setStepThree, albumID }) => {
           }
 
           const newImage = await createImage(imgObj, user)
-
         }
       } catch (error) {
         console.error('Error uploading images:', error);
@@ -101,7 +98,7 @@ const AddPhotos = ({ user, notify, setStepTwo, setStepThree, albumID }) => {
         <h1>Add a new batch of photos/videos</h1>
         { 
           loading ? 
-          <h1>{`uploading... ${index} of ${files.length}`}</h1> :
+          <h1>{`uploading... ${files.length} files`}</h1> :
           <>
           <Form onSubmit={handleSubmit}>
             <input style={{ display: 'none' }} onChange={onImageChange} type="file" accept="image/*" id="fileInput" multiple />

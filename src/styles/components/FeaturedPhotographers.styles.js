@@ -14,10 +14,25 @@ export const SectionTitle = styled.p`
   margin-bottom: 10px;
 `
 
-export const FeaturedPhotographerContainer = styled.div`
+export const PhotographerContainer = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+`
+
+export const FeaturedPhotographerContainer = styled(Link)`
+  cursor: pointer;
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-radius: 20px;
+  padding: 10px;
+  transition: 150ms ease-in-out;
+  text-decoration: none;
+
+  &:hover {
+    background-color: #ececec;
+  }
 `
 
 export const FeaturedPhotographerImage = styled.img`
@@ -40,9 +55,10 @@ export const FeaturedNameContainer = styled.div`
   letter-spacing: 1.2px;
 `
 
-export const NameLink = styled(Link)`
+export const Name = styled.p`
   color: black;
   text-decoration: none;
   cursor: pointer;
   text-align: center;
+  margin-top: 4px;
 `
