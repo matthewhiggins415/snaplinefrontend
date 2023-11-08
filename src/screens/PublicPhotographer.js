@@ -6,7 +6,7 @@ import { getAllImagesOfAnAlbum } from '../api/image.js';
 import { ScreenContainer, PhotographerContainer, PhotographerInfo, PhotographerImage, SubscribeBtn, AlbumCollectionContainer, Album, ImageContainer, ImageContainerAlbumInfo, ImageListingsContainer } from '../styles/screens/PublicPhotographer.styles.js';
 import ImageListing from '../components/imagelisting/ImageListing.js';
 
-const PublicPhotographer = ({ user, notify }) => {
+const PublicPhotographer = ({ user, notify, setUser }) => {
   const [photographer, setPhotographer] = useState({})
   const [albums, setAlbums] = useState([])
   const { id } = useParams();
@@ -92,7 +92,7 @@ const PublicPhotographer = ({ user, notify }) => {
         </ImageContainerAlbumInfo> : <p>no albums selected</p>}
         <ImageListingsContainer>
           {loading === "true" ? <p>Loading..</p> : images.map((image) => (
-            <ImageListing notify={notify} listing={image} name={image.photographerName}/>
+            <ImageListing notify={notify} listing={image} user={user} name={image.photographerName} setUser={setUser}/>
           ))}
         </ImageListingsContainer>
       </ImageContainer>
