@@ -4,9 +4,12 @@ import { StarIcon } from '../../styles/icons/StarIcon';
 import { addToCart } from '../../api/cart';
 
 const ImageListing = ({ notify, listing, name, user, setUser }) => {
-  console.log("user: ", user)
-  
   const handleAddToCart = async (user, id) => {
+    if (Object.keys(user).length === 0) {
+      notify('register or login to purchase', 'warning')
+      return
+    }
+
     try {
       const response = await addToCart(user, id)
       console.log("Response after adding to cart: ", response)
@@ -27,10 +30,10 @@ const ImageListing = ({ notify, listing, name, user, setUser }) => {
         <Image src={listing.url} />
       </div>
       <ImageListingInfo>
-        <Location to="/location/cronkitebeach">{listing.location}</Location>
+        <p>{listing.location}</p>
         <p>{listing.date}</p>
         <BottomInfo>
-          <PhotographerInfoLink to="/photographer/dougflaherty">
+          <PhotographerInfoLink to={`/public/photographer/${listing.photographer}`}>
             <h4>{name}</h4>
             <ReviewInfo>
               <StarIcon />

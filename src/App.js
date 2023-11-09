@@ -60,7 +60,7 @@ const App = () => {
         <Route path='/login' element={<Login user={user} setUser={setUser} notify={notify}/>}/>
         <Route path='/register' element={<Register user={user} setUser={setUser} notify={notify}/>} />
         <Route path='/photographer/:id' element={<PhotographerProfile user={user} notify={notify} />} exact />
-        <Route path='/public/photographer/:id' element={<PublicPhotographer user={user} notify={notify} setUser={setUser}/>} exact />
+        <Route path='/public/photographer/:id' element={<PublicPhotographer user={user} notify={notify} setUser={setUser}/>} exact/>
         <Route path='/location/:id' element={<LocationScreen />} exact />
         <Route path='/becomephotographer' element={<BecomePhotographer user={user} notify={notify}/>} exact />
         <Route path='/helpcenter' element={<HelpCenter />} exact />

@@ -25,7 +25,7 @@ export const CartContainer = styled.div`
 `
 
 export const CartItem = styled.div`
-  width: 700px;
+  width: auto;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
@@ -36,21 +36,29 @@ export const CartItem = styled.div`
 
   @media (max-width: 730px) {
     /* Styles for screens up to 576px wide */
-    width: 400px;
-    height: 500px;
+    height: auto;
     display: flex;
     flex-direction: column;
   }
 `
 
 export const CartItemInfo = styled.div`
-  height: 250px;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   font-size: x-large;
   font-family: Arial, Helvetica, sans-serif;
   letter-spacing: 1.2px;
+  padding-left: 20px;
+
+  div {
+    margin-top: 20px;
+  }
+
+  @media (max-width: 730px) {
+    margin-top: 20px;
+  }
 `
 
 export const Image = styled.img`
@@ -76,9 +84,28 @@ export const RemoveBtn = styled.button`
   transition: 150ms ease-in-out;
   border: none;
   color: red;
+  margin-top: 20px;
 
   &:hover {
     background-color: red;
     color: white;
   }
+`
+
+export const SummaryContainer = styled.div`
+  width: 100%;
+  max-width: 900px;
+  align-items: center;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+`
+
+export const Summary = styled.div`
+  display: flex;
+  width: 100%;
+  max-width: 400px;
+  justify-content: space-between;
+  margin-top: 20px;
 `

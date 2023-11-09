@@ -22,12 +22,7 @@ const FeaturedImages = ({ user, notify }) => {
   }, [])
 
   const handleClick = (id) => {
-    if (Object.keys(user).length === 0) {
-      notify('register or login to purchase', 'warning')
-      navigate('/register');
-    } else {
-      navigate(`/public/photographer/${id}`);
-    }
+    navigate(`/public/photographer/${id}`);
   }
   
   return (

@@ -9,3 +9,9 @@ export const getAPhotographer = (id) => {
 export const getFeaturedPhotographers = () => {
   return axios.get(apiUrl + `/featuredPhotographers`)
 }
+
+export const searchForPhotographer = (input) => {
+  return axios.post(apiUrl + `/photographers/search`, {
+    searchValue: input
+  })
+}

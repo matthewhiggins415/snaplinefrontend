@@ -6,14 +6,18 @@ import snowboard from '../../videos/snowboardingvid.mp4';
 import climb from '../../videos/rockclimbing.mp4';
 
 const Hero = () => {
-  const vidArr = [surf, vball, snowboard, climb];
-  const [src, setSrc] = useState(vidArr[0])
+  const vidArr = [surf, snowboard, climb, vball];
+  const [srcIndex, setSrcIndex] = useState(0);
+
+  const handleVideoEnded = () => {
+    const nextIndex = (srcIndex + 1) % vidArr.length;
+    setSrcIndex(nextIndex);
+  };
 
   return (
     <VideoOverlay>
-      <VideoElement src={src} autoPlay loop muted />
+      <VideoElement src={vidArr[srcIndex]} autoPlay muted onEnded={handleVideoEnded} />
       <Overlay>
-        {/* You can add content inside the overlay, such as text or other elements */}
         <h1>Connecting Photographers and Hobbyists</h1>
       </Overlay>
     </VideoOverlay>
