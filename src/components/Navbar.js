@@ -3,7 +3,6 @@ import { NavbarContainer, LeftContainer, RightContainer, BecomePhotographerLink 
 import Logo from './logo/Logo';
 import UserMenu from './userMenu/UserMenu';
 import DropDown from './dropdownmenu/Dropdown';
-import SearchBar from './searchbar/searchBar';
 
 const Navbar = ({ user, handleSignOut }) => {
   const [showDropDown, setShowDropDown] = useState(false);
@@ -23,7 +22,6 @@ const Navbar = ({ user, handleSignOut }) => {
           <UserMenu user={user} handleDropShow={handleDropShow} />
         </RightContainer>
       </NavbarContainer>
-      <SearchBar />
       <DropDown user={user} show={showDropDown} handleDropShow={handleDropShow} setShowDropDown={setShowDropDown} handleSignOut={handleSignOut} />
     </>
   )

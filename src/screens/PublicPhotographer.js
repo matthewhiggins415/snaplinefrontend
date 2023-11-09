@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { getAPhotographer } from '../api/photographer.js';
 import { getAllPublicAlbums, getASingleAlbum } from '../api/album.js';
 import { getAllImagesOfAnAlbum } from '../api/image.js';
+import { BackBtn } from '../utils/BackBtn';
 import { ScreenContainer, PhotographerContainer, PhotographerInfo, PhotographerImage, SubscribeBtn, AlbumCollectionContainer, Album, ImageContainer, ImageContainerAlbumInfo, ImageListingsContainer } from '../styles/screens/PublicPhotographer.styles.js';
 import ImageListing from '../components/imagelisting/ImageListing.js';
 
@@ -66,6 +67,7 @@ const PublicPhotographer = ({ user, notify, setUser }) => {
 
   return (
     <ScreenContainer>
+      <BackBtn />
       <PhotographerContainer>
         <PhotographerInfo>
           <PhotographerImage src={photographer.picture} />

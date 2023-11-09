@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const ScreenContainer = styled.div`
   min-height: 90vh;
+  padding: 20px;
 `
 
 export const PhotographerContainer = styled.div`

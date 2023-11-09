@@ -1,5 +1,5 @@
 import React, { useState} from 'react';
-import { SearchContainer, Form, Input, ResultContainer, ResultLink } from '../../styles/components/SearchBar.styles';
+import { SearchContainer, Form, Input, ResultContainer, ResultLink, ClearBtn } from '../../styles/components/SearchBar.styles';
 import { searchForPhotographer } from '../../api/photographer';
 import { useNavigate } from 'react-router-dom';
 
@@ -39,6 +39,7 @@ const SearchBar = () => {
           }}
           placeholder="find a photographer"
           required/>
+          {results.length > 0 ? <ClearBtn onClick={handleClick}>x</ClearBtn> : ''}
       </Form>
       <ResultContainer>
         {results.map((result) => (

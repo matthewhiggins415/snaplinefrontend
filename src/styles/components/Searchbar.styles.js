@@ -2,15 +2,17 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const SearchContainer = styled.div`
-  min-height: 100px;
+  height: 100px;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  overflow: visible;
 `
 
 export const Form = styled.div`
+  position: absolute;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -40,14 +42,15 @@ export const Input = styled.input`
 `
 
 export const ResultContainer = styled.div`
-  top: 150px;
-  position: fixed;
+  position: relative;
+  top: 75px;
   border-radius: 10px;
   width: 400px;  
-  height: auto;
+  height: 400px;
+  overflow-x: scroll;
   display: flex;
   flex-direction: column;
-  z-index: 20;
+  z-index: 999;
   background-color: white;
   border: 2px solid #ececec;
 
@@ -59,6 +62,15 @@ export const ResultContainer = styled.div`
     width: 600px;
   }
 ` 
+
+export const ClearBtn = styled.button`
+  padding: 5px;
+  color: red;
+  margin-right: 10px;
+  cursor: pointer;
+  border: none;
+  background-color: white;
+`
 
 export const ResultLink = styled(Link)`
   padding: 10px;
