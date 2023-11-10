@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getAPhotographer } from '../api/photographer.js';
+import { getAPhotographer, subscribeToPhotographer, unsubscribeToPhotographer } from '../api/photographer.js';
 import { getAllPublicAlbums, getASingleAlbum } from '../api/album.js';
 import { getAllImagesOfAnAlbum } from '../api/image.js';
 import { BackBtn } from '../utils/BackBtn';
@@ -14,25 +14,22 @@ const PublicPhotographer = ({ user, notify, setUser }) => {
   const [selectedAlbum, setSelectedAlbum] = useState({});
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [alreadySubscribed, setAlreadySubscribed] = useState(false);
 
-  const photographerName = photographer.firstName + " " + photographer.lastName
-
-  console.log("selectedAlbum: ", selectedAlbum)
-
+  // get the photographer 
   useEffect(() => {
     const retrievePhotographer = async (id) => {
       const response = await getAPhotographer(id);
-      console.log("response: ", response)
       setPhotographer(response.data.user)
     }
 
     retrievePhotographer(id)
   }, [])
 
+  // get the albums of photographer
   useEffect(() => {
     const getAlbums = async (id) => {
       const albumResponse = await getAllPublicAlbums(id);
-      console.log("albums: ", albumResponse);
       setAlbums(albumResponse.data.albums);
       setSelectedAlbum(albumResponse.data.albums[0]);
 
@@ -40,7 +37,6 @@ const PublicPhotographer = ({ user, notify, setUser }) => {
       
       if (albumResponse.data.albums.length > 0) {
         const imageResponse = await getAllImagesOfAnAlbum(albumResponse.data.albums[0]._id);
-        console.log("image response", imageResponse);
         setImages(imageResponse.data.images)
       }
 
@@ -51,9 +47,18 @@ const PublicPhotographer = ({ user, notify, setUser }) => {
     getAlbums(id)
   }, [])
 
+  // logic if user is subscribed already or not
+  useEffect(() => {
+    if (Object.keys(user).length > 0) {
+      if (user?.subscribedTo.indexOf(id) !== -1) {
+        setAlreadySubscribed(true)
+      }
+    }
+  }, [])
+
+  // handle selecting an album
   const handleClick = async (id) => {
     const getAlbum = await getASingleAlbum(id)
-    console.log("get album: ", getAlbum)
     setSelectedAlbum(getAlbum.data.album)
 
     setLoading(true)
@@ -65,6 +70,35 @@ const PublicPhotographer = ({ user, notify, setUser }) => {
 
   }
 
+  // handle subscribe to photographer
+  const handleSubscribe = async (user, id) => {
+    if (Object.keys(user).length > 0) {
+      try {
+        const response = await subscribeToPhotographer(user, id);
+        setUser(response.data.user)
+        setAlreadySubscribed(true)
+        notify("subscribed")
+      } catch(error) {
+        console.log(error);
+      }
+    } else { 
+      notify('login/register to subscribe', 'warning')
+    }
+  }
+
+  // handle unsubscribe to photographer
+  const handleUnsubscribe = async (user, id) => {
+    try {
+      const response = await unsubscribeToPhotographer(user, id)
+      console.log(response)
+      setUser(response.data.user)
+      setAlreadySubscribed(false)
+      notify('unsubscribed')
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
     <ScreenContainer>
       <BackBtn />
@@ -73,7 +107,7 @@ const PublicPhotographer = ({ user, notify, setUser }) => {
           <PhotographerImage src={photographer.picture} />
           <h3>{photographer.fullName}</h3>
           <p>{photographer?.albums?.length} Albums</p>
-          <SubscribeBtn>subscribe</SubscribeBtn>
+         {alreadySubscribed  === false ? <SubscribeBtn onClick={() => handleSubscribe(user, id)}>subscribe</SubscribeBtn> : <SubscribeBtn onClick={() => handleUnsubscribe(user, id)}>unsubscribe</SubscribeBtn>}
         </PhotographerInfo>
       </PhotographerContainer>
       <AlbumCollectionContainer>
@@ -94,7 +128,7 @@ const PublicPhotographer = ({ user, notify, setUser }) => {
         </ImageContainerAlbumInfo> : <p>no albums selected</p>}
         <ImageListingsContainer>
           {loading === "true" ? <p>Loading..</p> : images.map((image) => (
-            <ImageListing notify={notify} listing={image} user={user} name={image.photographerName} setUser={setUser}/>
+            <ImageListing key={image._id} notify={notify} listing={image} user={user} name={image.photographerName} setUser={setUser}/>
           ))}
         </ImageListingsContainer>
       </ImageContainer>

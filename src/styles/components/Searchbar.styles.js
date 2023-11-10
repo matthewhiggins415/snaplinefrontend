@@ -46,7 +46,7 @@ export const ResultContainer = styled.div`
   top: 75px;
   border-radius: 10px;
   width: 400px;  
-  height: 400px;
+  height: fit-content;
   overflow-x: scroll;
   display: flex;
   flex-direction: column;

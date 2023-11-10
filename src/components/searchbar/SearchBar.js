@@ -1,27 +1,30 @@
 import React, { useState} from 'react';
 import { SearchContainer, Form, Input, ResultContainer, ResultLink, ClearBtn } from '../../styles/components/SearchBar.styles';
 import { searchForPhotographer } from '../../api/photographer';
-import { useNavigate } from 'react-router-dom';
 
 const SearchBar = () => {
-  const navigate = useNavigate();
   const [input, setInput] = useState('');
   const [results, setResults] = useState([])
 
   const handleSearch = async (input) => {
     console.log(input)
 
-    try {
-      let response = await searchForPhotographer(input)
-      console.log("response: ", response)
-      setResults(response.data.users)
-    } catch(error) {
-      console.log(error)
+    if (input.length > 0) {
+      try {
+        const cleanedInput = input.replace(/[^A-Za-z]/g, '');
+        let response = await searchForPhotographer(cleanedInput)
+        console.log("response: ", response)
+        setResults(response.data.users)
+      } catch(error) {
+        console.log(error)
+      }
+    } else {
+      setInput("");
+      setResults([]);
     }
   }
 
   const handleClick = (id) => {
-    // navigate(`/public/photographer/${id}`);
     setInput("");
     setResults([]);
   }
@@ -38,7 +41,8 @@ const SearchBar = () => {
             handleSearch(e.target.value)
           }}
           placeholder="find a photographer"
-          required/>
+          required
+        />
           {results.length > 0 ? <ClearBtn onClick={handleClick}>x</ClearBtn> : ''}
       </Form>
       <ResultContainer>
