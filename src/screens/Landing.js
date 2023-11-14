@@ -1,8 +1,8 @@
 import React from 'react';
 import Hero from '../components/hero/Hero';
+import SearchBar from '../components/searchBar/searchBar.js';
 import FeaturedPhotographers from '../components/featuredphotographers/featuredPhotographers';
 import FeaturedImages from '../components/featuredimages/featuredImages';
-import SearchBar from '../components/searchbar/searchBar';
 
 const Landing = ({ user, notify }) => {
   return (
