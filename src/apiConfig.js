@@ -1,7 +1,7 @@
 let apiUrl
 
 const apiUrls = {
-  production: 'deployed-backend',
+  production: 'https://pix-marketplace-81ae081f1bb9.herokuapp.com',
   development: 'http://localhost:8080'
 }
 
