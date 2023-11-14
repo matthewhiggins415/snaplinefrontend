@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { DropDownContainer, DropDownBtn, SignOutBtn } from '../../styles/components/Dropdown.styles';
+import { DropDownContainer, DropDownBtn, SignOutBtn, P } from '../../styles/components/Dropdown.styles';
 import { useNavigate } from "react-router-dom";
 
 const DropDown = ({ user, show, setShowDropDown, handleSignOut }) => {
@@ -27,7 +27,7 @@ const DropDown = ({ user, show, setShowDropDown, handleSignOut }) => {
           <DropDownBtn to="/login">Login</DropDownBtn> :
           <>
             <DropDownBtn to={`/profile/${user._id}`}>Profile</DropDownBtn>
-            <DropDownBtn to="/cart">{user.cart.length > 0 ? "Cart" + " " + "(" + user.cart.length + ")" : "Cart"}</DropDownBtn>
+            {user.cart.length > 0 ? <DropDownBtn to="/cart">Cart<P>{user.cart.length}</P></DropDownBtn> : <DropDownBtn to="/cart">Cart</DropDownBtn>}
           </>
       }
       {

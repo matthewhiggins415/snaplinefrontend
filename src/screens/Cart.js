@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ScreenContainer, CartContainer, CartItem, Image, RemoveBtn, CartItemInfo, SummaryContainer, Summary } from '../styles/screens/Cart.styles';
+import { ScreenContainer, CartContainer, CartItem, Image, RemoveBtn, CartItemInfo, SummaryContainer, Summary, Overlay } from '../styles/screens/Cart.styles';
 import { useNavigate } from "react-router-dom";
 import { getCart, removeFromCart } from '../api/cart';
 import { TbAxisX } from 'react-icons/tb';
@@ -91,7 +91,10 @@ const Cart = ({ user, setUser, notify }) => {
         {Object.keys(cart).length > 0 
           ? cart.map((item) => (
             <CartItem key={item._id}>
-              <Image src={item.url}/>
+              <div>
+                <Overlay photographerName={item.photographerName}/>
+                <Image src={item.url}/>
+              </div>
               <CartItemInfo>
                 <div>
                   <p>{item.sport}</p>
@@ -104,8 +107,8 @@ const Cart = ({ user, setUser, notify }) => {
                     <p>Discount Price: {"$" + item.discountPrice}</p>
                   </div>
                 </div>
-                <RemoveBtn onClick={() => handleRemove(user, item._id)}>remove</RemoveBtn>
               </CartItemInfo>
+              <RemoveBtn onClick={() => handleRemove(user, item._id)}>remove</RemoveBtn>
             </CartItem>
           ))
           : <p>nothing in cart</p> }

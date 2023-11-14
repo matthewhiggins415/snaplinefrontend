@@ -15,34 +15,59 @@ export const ScreenContainer = styled.div`
 `
 
 export const CartContainer = styled.div`
+  height: fit-content;
+  min-height: 90vh;
   width: 100%;
   max-width: 900px;
+  display: flex;
   align-items: center;
   margin: 0 auto;
   padding: 20px;
-  display: flex;
   flex-direction: column;
 `
 
 export const CartItem = styled.div`
-  width: auto;
+  width: fit-content;
+  min-width: 250px;
+  min-height: 300px;
   display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  background-color: #ececec;
-  margin-bottom: 25px;
-  padding: 20px;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: white;
+  border: none;
+  transition: 150ms ease-in-out;
   border-radius: 15px;
+  padding: 10px;
 
-  @media (max-width: 730px) {
-    /* Styles for screens up to 576px wide */
-    height: auto;
-    display: flex;
-    flex-direction: column;
+  &:hover {
+    background-color: #F5F5F5;
+  }
+`
+
+export const Overlay = styled.div`
+  position: absolute;
+  height: 300px;
+  width: 300px;
+  z-index: 5;
+  border-radius: 15px;
+  background: rgba(0, 0, 0, 0.4);
+
+  &:after {
+    position: absolute;
+    width: 100%;
+    height: 350px;
+    overflow: hidden;
+    top: -10px;
+    left: 10px;
+    content: ${(props) => (props.photographerName ? `"${props.photographerName + " " + props.photographerName}"` : '""')};
+    transform: rotate(-30deg);
+    font-size: 5em;
+    color: rgba(255, 255, 255, 0.4);
   }
 `
 
 export const CartItemInfo = styled.div`
+  width: 300px;
   height: auto;
   display: flex;
   flex-direction: column;
@@ -55,17 +80,13 @@ export const CartItemInfo = styled.div`
   div {
     margin-top: 20px;
   }
-
-  @media (max-width: 730px) {
-    margin-top: 20px;
-  }
 `
 
 export const Image = styled.img`
   width: 300px;
   height: 300px;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 15px;
 `
 
 export const RemoveBtn = styled.button`
@@ -84,7 +105,7 @@ export const RemoveBtn = styled.button`
   transition: 150ms ease-in-out;
   border: none;
   color: red;
-  margin-top: 20px;
+  margin: 10px auto;
 
   &:hover {
     background-color: red;

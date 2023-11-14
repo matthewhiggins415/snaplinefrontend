@@ -104,14 +104,14 @@ const PublicPhotographer = ({ user, notify, setUser }) => {
       <BackBtn />
       <PhotographerContainer>
         <PhotographerInfo>
-          <PhotographerImage src={photographer.picture} />
-          <h3>{photographer.fullName}</h3>
+          <PhotographerImage src={photographer?.picture} />
+          <h3>{photographer?.fullName}</h3>
           <p>{photographer?.albums?.length} Albums</p>
          {alreadySubscribed  === false ? <SubscribeBtn onClick={() => handleSubscribe(user, id)}>subscribe</SubscribeBtn> : <SubscribeBtn onClick={() => handleUnsubscribe(user, id)}>unsubscribe</SubscribeBtn>}
         </PhotographerInfo>
       </PhotographerContainer>
       <AlbumCollectionContainer>
-        {Object.keys(albums).length > 0 ? albums.map((album) => (
+        {Object.keys(albums).length > 0 ? albums?.map((album) => (
           <Album onClick={() => handleClick(album._id)} key={album._id}>
             <h2>{album.location}</h2>
             <h2>{album.sport}</h2>

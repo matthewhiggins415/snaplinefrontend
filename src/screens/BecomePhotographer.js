@@ -20,8 +20,7 @@ const BecomePhotographer = ({ user, notify }) => {
     console.log('clicked: ', user)
 
     if (Object.keys(user).length === 0) {
-      notify('please login or register')
-      navigate("/login");
+      notify('please login or register', 'warning')
       return
     }
 

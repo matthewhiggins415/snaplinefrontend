@@ -47,7 +47,7 @@ export const ChangeImg = styled.img`
 `
 
 export const DeleteProfile = styled.button`
-  width: 100%;
+  width: 300px;
   padding: 15px;
   background-color: #F5F5F5;
   border-radius: 20px;

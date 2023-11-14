@@ -35,6 +35,8 @@ export const DropDownContainer = styled.div`
 `;
 
 export const DropDownBtn = styled(Link)`
+  display: flex;
+  align-items: center;
   width: 100%;
   margin: 0 auto;
   padding: 15px 30px;
@@ -82,4 +84,13 @@ export const SignOutBtn = styled.button`
   &:hover {
     background-color: #ECECEC;
   }
+`
+
+export const P = styled.p`
+  background-color: red;
+  color: white;
+  width: fit-content;
+  border-radius: 20%;
+  padding: 2px 5px;
+  margin-left: 10px;
 `
