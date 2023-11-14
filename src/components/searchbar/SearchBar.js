@@ -1,5 +1,5 @@
 import React, { useState} from 'react';
-import { SearchContainer, Form, Input, ResultContainer, ResultLink, ClearBtn } from '../../styles/components/SearchBar.styles';
+import { SearchContainer, Form, Input, ResultContainer, ResultLink, ClearBtn } from '../../styles/components/SearchBar.styles.js';
 import { searchForPhotographer } from '../../api/photographer';
 
 const SearchBar = () => {
