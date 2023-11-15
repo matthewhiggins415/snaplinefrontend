@@ -10,6 +10,12 @@ export const VideoElement = styled.video`
   width: 100%;
   height: auto;
   display: block;
+
+  @media (max-width: 420px) {
+    /* Styles for screens up to 576px wide */
+    min-height: 400px;
+    object-fit: cover;
+  }
 `;
 
 export const Overlay = styled.div`
@@ -28,4 +34,11 @@ export const Overlay = styled.div`
   height: 100%;
   background-color: rgba(0, 0, 0, 0.2); /* Adjust the overlay background color and opacity as needed */
   z-index: 1; /* Position the overlay above the video */
+
+  h1 {
+    @media (max-width: 420px) {
+      font-size: 40px;
+      width: 90%;
+    }
+  }
 `;

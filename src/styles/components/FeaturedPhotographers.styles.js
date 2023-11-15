@@ -29,6 +29,7 @@ export const FeaturedPhotographerContainer = styled(Link)`
   padding: 10px;
   transition: 150ms ease-in-out;
   text-decoration: none;
+  color: black;
 
   &:hover {
     background-color: #ececec;

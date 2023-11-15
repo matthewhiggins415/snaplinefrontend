@@ -6,7 +6,7 @@ export const Logo = () => {
   return (
     <LogoContainer to="/">
       <p title="everyone needs a hobby">PIX Marketplace</p>
-      <LogoIcon/>
+      {/* <LogoIcon/> */}
     </LogoContainer>
   )
 }

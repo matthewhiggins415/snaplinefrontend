@@ -10,11 +10,14 @@ export const NavbarContainer = styled.nav`
   padding: 5px;
   margin: 0 auto;
 
-  @media (max-width: 576px) {
+  @media (max-width: 420px) {
     /* Styles for screens up to 576px wide */
-    display: flex;
-    flex-directions: column;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 0px;
+    padding-right: 0px;
   }
+  
 `
 
 export const BecomePhotographerLink = styled(Link)`
@@ -44,6 +47,12 @@ export const BecomePhotographerLink = styled(Link)`
     margin: 0px;
     margin-bottom: 5px;
   }
+
+  @media (max-width: 420px) {
+    /* Styles for screens up to 576px wide */
+    padding: 0px;
+    margin: 0px;
+  }
 `
 
 export const LeftContainer = styled.div`
@@ -51,6 +60,10 @@ export const LeftContainer = styled.div`
   display: flex;
   align-items: center;
   padding-left: 20px;
+
+  @media (max-width: 420px) {
+    padding-left: 10px;
+  }
 `
 
 export const RightContainer = styled.div`
@@ -58,4 +71,8 @@ export const RightContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   padding-right: 20px;
+
+  @media (max-width: 420px) {
+    padding-right: 10px;
+  }
 `

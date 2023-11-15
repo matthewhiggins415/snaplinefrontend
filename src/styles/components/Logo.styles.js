@@ -12,4 +12,10 @@ export const LogoContainer = styled(Link)`
   text-decoration: none;
   cursor: pointer;
   color: red;
+
+  @media (max-width: 420px) {
+    /* Styles for screens up to 576px wide */
+    display: flex;
+    text-align: left;
+  }
 `

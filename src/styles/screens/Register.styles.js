@@ -73,7 +73,6 @@ export const FormBtn = styled.button`
 `
 
 export const ToLogin = styled(Link)`
-  text-style: none;
   color: black;
   text-align: center;
   margin-top: 20px;
