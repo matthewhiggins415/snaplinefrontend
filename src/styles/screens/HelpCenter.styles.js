@@ -9,6 +9,10 @@ export const ScreenContainer = styled.div`
   letter-spacing: 1.2px;
 
   h1 {
-    padding: 10px;
+    text-align: center;
   }
+`
+
+export const FaqsContainer = styled.div`
+  margin-top: 30px;
 `

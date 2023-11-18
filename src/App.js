@@ -63,7 +63,7 @@ const App = () => {
         <Route path='/public/photographer/:id' element={<PublicPhotographer user={user} notify={notify} setUser={setUser}/>} exact/>
         <Route path='/location/:id' element={<LocationScreen />} exact />
         <Route path='/becomephotographer' element={<BecomePhotographer user={user} notify={notify}/>} exact />
-        <Route path='/helpcenter' element={<HelpCenter />} exact />
+        <Route path='/helpcenter' element={<HelpCenter user={user}/>} exact />
         <Route path='/cart' element={<Cart user={user} setUser={setUser} notify={notify}/>} exact />
         <Route path='/profile/:id' element={<UserProfile user={user} notify={notify} setUser={setUser}/>} exact />
         <Route path='/add' element={<AddScreen user={user} notify={notify}/>} exact />
