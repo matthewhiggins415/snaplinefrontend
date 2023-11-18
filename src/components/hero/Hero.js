@@ -16,7 +16,7 @@ const Hero = () => {
 
   return (
     <VideoOverlay>
-      <VideoElement src={vidArr[srcIndex]} autoPlay muted onEnded={handleVideoEnded} />
+      <VideoElement src={vidArr[srcIndex]} autoPlay muted controls={false} onEnded={handleVideoEnded} />
       <Overlay>
         <h1>Connecting Photographers and Hobbyists</h1>
       </Overlay>
