@@ -63,6 +63,7 @@ export const ImageListingInfo = styled.div`
   text-align: start;
   width: 100%;
   margin-top: 5px;
+  color: black;
 `
 
 export const ReviewInfo = styled.div`
@@ -97,6 +98,7 @@ export const PriceContainer = styled.div`
     background-color: #ECECEC;
     border-radius: 10px;
     font-size: 2em;
+    color: black;
   }
 `
 

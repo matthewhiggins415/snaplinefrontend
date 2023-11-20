@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { getUser } from './api/auth';
 
 // React Router
 import {
@@ -46,10 +47,25 @@ const App = () => {
     const handleSignOut = (e) => {
       setUser({})
       console.log(document.getElementById("signInDiv"))
-      localStorage.removeItem("token");
+      localStorage.removeItem('user');
       notify('signed out')
-      // document.getElementById("signInDiv").hidden = false;
     }
+
+    useEffect(() => {
+      const persistLoggedInUser = async () => {
+        const storedUser = localStorage.getItem('user');
+
+        if (storedUser !== null) {
+          const userObj = JSON.parse(localStorage.user);
+          const res = await getUser(userObj._id)
+          setUser(res.data.user);
+        } else {
+          console.log('no user in local storage')
+        }
+      }
+
+      persistLoggedInUser()
+    }, [])
     
   return (
     <Router> 

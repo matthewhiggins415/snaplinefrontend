@@ -64,7 +64,8 @@ const Login = ({ user, setUser, notify }) => {
 
     try {
       let res = await signIn(formData);
-      localStorage.setItem('token', res.data.user.token)
+      console.log("res", res)
+      localStorage.setItem('user', JSON.stringify(res.data.user))
       if (res.status === 200) {
         setFormData({ email: '', password: '' })
         notify('login denied', 'danger')

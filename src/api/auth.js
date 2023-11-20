@@ -62,3 +62,7 @@ export const updateUserStripeId = (user, newId) => {
   )
 }
   
+
+export const getUser = (id) => {
+  return axios.get(apiUrl + `/user/${id}`)
+}
