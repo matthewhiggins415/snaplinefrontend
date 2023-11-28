@@ -47,6 +47,9 @@ export const ChangeImg = styled.img`
 `
 
 export const DeleteProfile = styled.button`
+  font-size: medium;
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: 1.2px;
   width: 300px;
   padding: 15px;
   background-color: #F5F5F5;
@@ -57,6 +60,7 @@ export const DeleteProfile = styled.button`
 
   &:hover {
     background-color: red;
+    color: white;
   }
 `
 
@@ -107,6 +111,7 @@ export const RemoveBtn = styled.button`
 
   &:hover {
     background-color: red;
+    color: white;
   }
 `
 

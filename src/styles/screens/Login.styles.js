@@ -70,6 +70,11 @@ export const FormBtn = styled.button`
     background-color: red;
     color: white;
   }
+
+  @media (max-width: 420px) {
+    border: 1px solid red;
+    color: red;
+  }
 `
 
 export const ToRegister = styled(Link)`

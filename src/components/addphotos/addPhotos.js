@@ -52,7 +52,8 @@ const AddPhotos = ({ user, notify, setStepTwo, setStepThree, albumID }) => {
 
           const imgObj = {
             imgURL: response.data.downloadURL,
-            albumID: albumID
+            albumID: albumID,
+            firebaseName: response.data.firebaseName
           }
 
           const newImage = await createImage(imgObj, user)

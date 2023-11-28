@@ -10,7 +10,7 @@ const PricePhotos = ({ user, notify, albumID}) => {
   useEffect(() => {
     console.log('fetch images');
 
-    async function getImages(user, albumID) {
+    const getImages = async (user, albumID) => {
       try {
         console.log("albumID: ", albumID)
         const response = await getAllImagesOfAnAlbum(albumID);

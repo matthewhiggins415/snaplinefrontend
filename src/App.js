@@ -46,9 +46,9 @@ const App = () => {
     
     const handleSignOut = (e) => {
       setUser({})
-      console.log(document.getElementById("signInDiv"))
       localStorage.removeItem('user');
       notify('signed out')
+      // redirect to landing
     }
 
     useEffect(() => {
@@ -81,7 +81,7 @@ const App = () => {
         <Route path='/becomephotographer' element={<BecomePhotographer user={user} notify={notify}/>} exact />
         <Route path='/helpcenter' element={<HelpCenter user={user}/>} exact />
         <Route path='/cart' element={<Cart user={user} setUser={setUser} notify={notify}/>} exact />
-        <Route path='/profile/:id' element={<UserProfile user={user} notify={notify} setUser={setUser}/>} exact />
+        <Route path='/profile/:id' element={<UserProfile user={user} notify={notify} setUser={setUser} handleSignOut={handleSignOut}/>} exact />
         <Route path='/add' element={<AddScreen user={user} notify={notify}/>} exact />
       </Routes>
     </Router>

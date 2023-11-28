@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { ScreenContainer, UserContainer, UserInfo, ChangeImg, DeleteProfile, UploadBtn, RemoveBtn, UserImageForm, PhotographerContainer, PhotographerImage, PhotographerLink } from '../styles/screens/UserProfile.styles';
 import { BackBtn } from '../utils/BackBtn';
 import { ProfileUser } from '../styles/icons/ProfileUser';
+import { deleteUser } from '../api/auth';
 
 // functionality for upload and user update
 import { uploadUserProfImage } from '../api/firebase';
@@ -11,7 +12,7 @@ import { getPhotographersUsersSubscribedTo } from '../api/photographer';
 
 import { useNavigate } from "react-router-dom";
 
-const UserProfile = ({ user, notify, setUser }) => {
+const UserProfile = ({ user, notify, setUser, handleSignOut }) => {
   const navigate = useNavigate();
   const [files, setFiles] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -85,6 +86,17 @@ const UserProfile = ({ user, notify, setUser }) => {
     console.log(e)
   }
 
+  const handleDeleteUser = async () => {
+    let res = await deleteUser(user)
+    console.log("delete profile response", res)
+
+    if (res.data.msg === "successfully deleted user") {
+      handleSignOut()
+    } else {
+      notify('something went wrong', 'warning')
+    }
+  }
+
   return (
     <ScreenContainer>
       <BackBtn />
@@ -104,9 +116,9 @@ const UserProfile = ({ user, notify, setUser }) => {
         <UserInfo>
           <p><strong>profile created:</strong> {formattedDate}</p>
           <p><strong>email:</strong> {user.email}</p>
-          <p><strong>is a photographer: </strong> {user.isPhotographer.toString()}</p>
+          <p><strong>is a photographer: </strong> {user?.isPhotographer?.toString()}</p>
         </UserInfo>
-        <DeleteProfile>delete profile</DeleteProfile>
+        <DeleteProfile onClick={handleDeleteUser}>delete profile</DeleteProfile>
       </UserContainer>
       {photographers.length > 0 ? <PhotographerContainer>
         <h3>photographers you're subscribed to:</h3>

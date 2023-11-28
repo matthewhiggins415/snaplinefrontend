@@ -77,6 +77,7 @@ export const ImageContainerAlbumInfo = styled.div`
   margin: 0 auto;
   margin-top: 25px;
   margin-bottom: 25px;
+  color: black;
 `
 
 export const ImageListingsContainer = styled.div`

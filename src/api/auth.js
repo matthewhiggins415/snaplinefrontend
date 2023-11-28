@@ -27,7 +27,7 @@ export const signIn = (data) => {
   })
 }
   
-//signout 
+//sign out 
 export const signOut = (user) => {
   return axios.delete(apiUrl + '/sign-out', {
     headers: {
@@ -62,7 +62,17 @@ export const updateUserStripeId = (user, newId) => {
   )
 }
   
-
+// get the user
 export const getUser = (id) => {
   return axios.get(apiUrl + `/user/${id}`)
+}
+
+// delete user forever
+export const deleteUser = (user) => {
+  return axios.delete(apiUrl + `/user/${user._id}`, 
+  {
+    headers: {
+      Authorization: `Bearer ${user.token}`
+    }
+  })
 }
