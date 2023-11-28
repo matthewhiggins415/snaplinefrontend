@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getUser } from './api/auth';
+import { useNavigate } from "react-router-dom";
 
 // React Router
 import {
@@ -34,6 +35,7 @@ require('./App.css')
 const App = () => {
   const [user, setUser] = useState({});
 
+  const navigate = useNavigate();
   
   const notify = (message, type) => {
     if (type === "warning") {
@@ -48,7 +50,7 @@ const App = () => {
       setUser({})
       localStorage.removeItem('user');
       notify('signed out')
-      // redirect to landing
+      navigate("/");
     }
 
     useEffect(() => {
